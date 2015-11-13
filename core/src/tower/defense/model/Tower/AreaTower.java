@@ -16,6 +16,6 @@ public class AreaTower extends Tower{
     public AreaTower(Vector2 center, Game game){
         super(center, game);
         proyectil = new SimpleProjectile();
-        //sdfsdfsdfsd
+        System.out.println("Probando");
     }
 }
