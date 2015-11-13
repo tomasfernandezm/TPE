@@ -1,8 +1,10 @@
 package tower.defense.model.Minion;
 
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import tower.defense.model.Entity;
 import tower.defense.model.Game;
+import tower.defense.model.Path;
 
 
 /**
@@ -15,15 +17,17 @@ public abstract class Minion extends Entity {
     private final static float WIDTH = 32;
     private final static float HEIGHT = 32;
     private int i = 0;
-    private int hitpoints = 100;
+    private int hitpoints = 1000;
+    private Path path;
 
-    public Minion(Vector2 center, Game game) {
+    public Minion(Vector2 center, Game game, Path path) {
         super(game);
         getPosition().setHeight(HEIGHT);
         getPosition().setWidth(WIDTH);
         getPosition().setCenter(center);
         //dirección por la cual va el minion
         this.velocity = new Vector2(1f, 0f);
+        this.path = path;
 
 
 
@@ -83,7 +87,7 @@ public abstract class Minion extends Entity {
     nose que hace
      */
     public void death() {
-        Minion minion = new RedMinion(getPosition().getCenter(new Vector2(0,400)), getGame());
+        Minion minion = new RedMinion(getPosition().getCenter(new Vector2(0,400)), getGame(),path);
 
         if(minion.velocity.x > 0) {
             minion.velocity.x *= -1;
@@ -92,13 +96,41 @@ public abstract class Minion extends Entity {
     }
 
     public void move(){
+
         Vector2 vect = new Vector2();
         getPosition().getCenter(vect);
-
         vect.add(velocity);
+
+        for(int i = 0;i<path.getRectangles().size();i++){
+            if(this.getPosition().overlaps(path.getRectangles().get(i))){
+                System.out.println("Llego al: " + i);
+                if(i==0){
+                    velocity.rotate(-90);
+                    vect.add(velocity);
+                }
+                if(i==1){
+                    velocity.rotate(90);
+                    vect.add(velocity);
+                }
+                if(i==2){
+                    velocity.rotate(90);
+                    vect.add(velocity);
+                }
+                if(i==3){
+                    velocity.rotate(-90);
+                    vect.add(velocity);
+                }
+            }
+
+        }
+
 
         checkBoundaries(vect);
 
         getPosition().setCenter(vect);
+    }
+
+    public void setVelocity(){
+
     }
 }

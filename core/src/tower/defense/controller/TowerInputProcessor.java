@@ -23,6 +23,7 @@ public class TowerInputProcessor extends MyInputProcessor implements com.badlogi
     public boolean keyDown(int keycode) {
         if(keycode == 45){
             game.addTower(new SimpleTower(new Vector2(100, 300), game));
+            System.out.println("Tower added");
         }
         return true;
     }

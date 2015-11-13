@@ -9,7 +9,7 @@ import tower.defense.model.Path;
  */
 public class RedMinion extends Minion{
 
-    public RedMinion(Vector2 center, Game game) {
-        super(center, game);
+    public RedMinion(Vector2 center, Game game,Path path) {
+        super(center, game, path);
     }
 }

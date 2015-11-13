@@ -24,6 +24,7 @@ public class Game {
     private List<GameListener> listeners = new LinkedList<GameListener>();
 
     private Player player = new Player();
+    private Path path = new Path();
 
     private Vector2 boundaries;
 
@@ -33,7 +34,7 @@ public class Game {
 
     public void init() {
         addTower(new SimpleTower(new Vector2(200, 200), this));
-        addMinion(new RedMinion(new Vector2(100, 120), this));
+        addMinion(new RedMinion(new Vector2(0, 120), this, path));
     }
 
     public void update(Graphics graphics) {
