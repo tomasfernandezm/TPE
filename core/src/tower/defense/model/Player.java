@@ -30,4 +30,8 @@ public class Player {
     public void addMoney(int money){
         this.money = getMoney() + money;
     }
+
+    public void printString(){
+        System.out.println("Vida: " + getLives() + " Plata: " + getMoney());
+    }
 }

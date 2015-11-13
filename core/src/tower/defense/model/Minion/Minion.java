@@ -3,7 +3,7 @@ package tower.defense.model.Minion;
 import com.badlogic.gdx.math.Vector2;
 import tower.defense.model.Entity;
 import tower.defense.model.Game;
-import tower.defense.model.Path;
+
 
 /**
  * Created by Tomi on 08/11/2015.
@@ -14,8 +14,8 @@ public abstract class Minion extends Entity {
     private Vector2 velocity;
     private final static float WIDTH = 32;
     private final static float HEIGHT = 32;
+    private int i = 0;
     private int hitpoints = 100;
-    private Path path;
 
     public Minion(Vector2 center, Game game) {
         super(game);
@@ -24,6 +24,8 @@ public abstract class Minion extends Entity {
         getPosition().setCenter(center);
         //dirección por la cual va el minion
         this.velocity = new Vector2(1f, 0f);
+
+
 
     }
 
@@ -36,14 +38,7 @@ public abstract class Minion extends Entity {
         if (isKilled()) {
             return;
         }
-        Vector2 vect = new Vector2();
-        getPosition().getCenter(vect);
-
-        vect.add(velocity);
-
-        checkBoundaries(vect);
-
-        getPosition().setCenter(vect);
+        move();
     }
 
     /*
@@ -88,11 +83,22 @@ public abstract class Minion extends Entity {
     nose que hace
      */
     public void death() {
-        Minion minion = new RedMinion(getPosition().getCenter(new Vector2()), getGame());
+        Minion minion = new RedMinion(getPosition().getCenter(new Vector2(0,400)), getGame());
 
         if(minion.velocity.x > 0) {
             minion.velocity.x *= -1;
         }
         getGame().addMinion(minion);
+    }
+
+    public void move(){
+        Vector2 vect = new Vector2();
+        getPosition().getCenter(vect);
+
+        vect.add(velocity);
+
+        checkBoundaries(vect);
+
+        getPosition().setCenter(vect);
     }
 }

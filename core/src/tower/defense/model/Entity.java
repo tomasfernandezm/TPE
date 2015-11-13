@@ -52,4 +52,12 @@ public abstract class Entity {
         return own.dst(other);
     }
 
+    public float getPositionX(){
+        return position.getX();
+    }
+
+    public float getPositionY(){
+        return position.getY();
+    }
+
 }
