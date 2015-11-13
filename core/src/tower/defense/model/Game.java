@@ -45,12 +45,10 @@ public class Game {
             if (m.isKilled()) {
                 minions.remove(m);
                 player.addMoney(50);
-                for (GameListener gl: listeners)
+                player.printString();
+                for (GameListener gl : listeners)
                     gl.minionKilled(m);
             }
-        }
-        if (Gdx.input.isKeyPressed(45)){
-            addTower(new SimpleTower(new Vector2(100,300), this));
         }
     }
 
