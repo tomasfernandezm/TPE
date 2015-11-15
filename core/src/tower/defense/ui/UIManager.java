@@ -1,15 +1,19 @@
 package tower.defense.ui;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import tower.defense.model.Entity;
 import tower.defense.model.GameListener;
 import tower.defense.model.Minion.Minion;
+import tower.defense.model.Path;
 import tower.defense.model.Player;
 import tower.defense.model.Tower.Tower;
 
@@ -35,6 +39,7 @@ public class UIManager implements GameListener {
     private Texture background2;
     private Texture rectan;
 
+    private Sound minionKilled = Gdx.audio.newSound(Gdx.files.internal("core/assets/facebook_ringtone_pop.mp3"));
     /*
     limites de la pantalla, en pixeles
      */
@@ -49,6 +54,8 @@ public class UIManager implements GameListener {
     private Player player = new Player();
 
     private UIPlayer uiPlayer = new UIPlayer(player);
+
+    private Path path = new Path();
 
     /*
     retorna los boundaries
@@ -86,6 +93,13 @@ public class UIManager implements GameListener {
         batch.begin();
         batch.draw(background, 0, 0, 500, Gdx.graphics.getHeight());
         batch.draw(background2, 500, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+
+        for (Rectangle r : path.getRectangles()){
+            getShapeRenderer().setColor(Color.BLUE);
+            getShapeRenderer().begin(ShapeRenderer.ShapeType.Filled);
+            getShapeRenderer().rect(r.getX(),r.getY(),r.getWidth(),r.getHeight());
+            getShapeRenderer().end();
+        }
         batch.end();
 
         for(UIEntity uiEntity: entities.values()) {
@@ -101,6 +115,7 @@ public class UIManager implements GameListener {
     @Override
     public void minionKilled(Minion minion) {
         entities.remove(minion);
+        minionKilled.play();
     }
 
     /*
