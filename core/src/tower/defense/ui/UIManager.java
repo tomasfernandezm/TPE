@@ -60,11 +60,11 @@ public class UIManager implements GameListener {
     crea las texturas e inicia los objetos para graficar
      */
     public UIManager() {
-        background = new Texture("assets/background.png");
-        background2 = new Texture("assets/black.png");
-        towerTexture = new Texture("assets/red.png");
-        minionTexture = new Texture("assets/basketball.png");
-        rectan = new Texture("assets/rect.png");
+        background = new Texture("core/assets/background.png");
+        background2 = new Texture("core/assets/black.png");
+        towerTexture = new Texture("core/assets/red.png");
+        minionTexture = new Texture("core/assets/brazuca-02.png");
+        //rectan = new Texture("assets/rect.png");
 
 
         camera = new OrthographicCamera();
