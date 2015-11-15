@@ -32,6 +32,8 @@ public class UIManager implements GameListener {
     private Texture towerTexture;
     private Texture minionTexture;
     private Texture background;
+    private Texture background2;
+    private Texture rectan;
 
     /*
     limites de la pantalla, en pixeles
@@ -58,9 +60,11 @@ public class UIManager implements GameListener {
     crea las texturas e inicia los objetos para graficar
      */
     public UIManager() {
-        background = new Texture("core/assets/black.png");
-        towerTexture = new Texture("core/assets/white.png");
-        minionTexture = new Texture("core/assets/red.png");
+        background = new Texture("assets/background.png");
+        background2 = new Texture("assets/black.png");
+        towerTexture = new Texture("assets/red.png");
+        minionTexture = new Texture("assets/basketball.png");
+        rectan = new Texture("assets/rect.png");
 
 
         camera = new OrthographicCamera();
@@ -80,7 +84,8 @@ public class UIManager implements GameListener {
 
 
         batch.begin();
-        batch.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        batch.draw(background, 0, 0, 500, Gdx.graphics.getHeight());
+        batch.draw(background2, 500, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         batch.end();
 
         for(UIEntity uiEntity: entities.values()) {
@@ -121,4 +126,5 @@ public class UIManager implements GameListener {
     public ShapeRenderer getShapeRenderer() {
         return shapeRenderer;
     }
+    public void nada4(){}
 }

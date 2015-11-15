@@ -14,11 +14,12 @@ public abstract class Minion extends Entity {
 
     private boolean killed = false;
     private Vector2 velocity;
-    private final static float WIDTH = 32;
-    private final static float HEIGHT = 32;
+    private final static float WIDTH = 40;
+    private final static float HEIGHT = 40;
     private int i = 0;
     private int hitpoints = 1000;
     private Path path;
+    private boolean reachEnd = false;
 
     public Minion(Vector2 center, Game game, Path path) {
         super(game);
@@ -28,9 +29,6 @@ public abstract class Minion extends Entity {
         //dirección por la cual va el minion
         this.velocity = new Vector2(1f, 0f);
         this.path = path;
-
-
-
     }
 
     /*hace al movimiento del minion, se le pasa un timedelta. Se crea un vector, se setea la posición en el vector
@@ -71,6 +69,7 @@ public abstract class Minion extends Entity {
     public boolean isKilled() {
         return killed;
     }
+    public boolean isReachEnd(){ return reachEnd;}
 
     /*
     le quita puntos de vida al minion
@@ -104,21 +103,32 @@ public abstract class Minion extends Entity {
         for(int i = 0;i<path.getRectangles().size();i++){
             if(this.getPosition().overlaps(path.getRectangles().get(i))){
                 System.out.println("Llego al: " + i);
-                if(i==0){
+                if(i==25){
                     velocity.rotate(-90);
                     vect.add(velocity);
                 }
-                if(i==1){
-                    velocity.rotate(90);
-                    vect.add(velocity);
-                }
-                if(i==2){
-                    velocity.rotate(90);
+                if(i==22){
+                    velocity.rotate(-90);
                     vect.add(velocity);
                 }
                 if(i==3){
+                    velocity.rotate(90);
+                    vect.add(velocity);
+                }
+                if(i==10){
+                    velocity.rotate(90);
+                    vect.add(velocity);
+                }
+                if(i==45){
+                    velocity.rotate(90);
+                    vect.add(velocity);
+                }
+                if(i==38){
                     velocity.rotate(-90);
                     vect.add(velocity);
+                }
+                if(i==54){
+                    reachEnd = true;
                 }
             }
 
@@ -133,4 +143,5 @@ public abstract class Minion extends Entity {
     public void setVelocity(){
 
     }
+    public void nada2(){}
 }

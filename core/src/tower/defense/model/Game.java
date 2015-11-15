@@ -34,7 +34,7 @@ public class Game {
 
     public void init() {
         addTower(new SimpleTower(new Vector2(200, 200), this));
-        addMinion(new RedMinion(new Vector2(0, 120), this, path));
+        addMinion(new RedMinion(new Vector2(25, 75), this, path));
     }
 
     public void update(Graphics graphics) {
@@ -46,6 +46,13 @@ public class Game {
             if (m.isKilled()) {
                 minions.remove(m);
                 player.addMoney(50);
+                player.printString();
+                for (GameListener gl : listeners)
+                    gl.minionKilled(m);
+            }
+            if (m.isReachEnd()) {
+                minions.remove(m);
+                player.spendLife();
                 player.printString();
                 for (GameListener gl : listeners)
                     gl.minionKilled(m);
@@ -84,5 +91,5 @@ public class Game {
     public void addGameListeners(GameListener gameListener) {
         listeners.add(gameListener);
     }
-
+    public void nada3(){}
 }
