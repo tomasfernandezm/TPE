@@ -34,7 +34,7 @@ public class Game {
 
     public void init() {
         addTower(new SimpleTower(new Vector2(200, 200), this));
-        addMinion(new RedMinion(new Vector2(0, 50), this, path));
+        addMinion(new RedMinion(new Vector2(25, 75), this, path));
     }
 
     public void update(Graphics graphics) {
