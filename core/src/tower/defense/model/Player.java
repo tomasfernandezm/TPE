@@ -27,6 +27,14 @@ public class Player {
         return level;
     }
 
+    public boolean isOver() {
+        return lives <= 0;
+    }
+
+    public void spendLife() {
+        lives--;
+    }
+
     public void addMoney(int money){
         this.money = getMoney() + money;
     }
@@ -34,4 +42,5 @@ public class Player {
     public void printString(){
         System.out.println("Vida: " + getLives() + " Plata: " + getMoney());
     }
+    public void nada5(){}
 }
