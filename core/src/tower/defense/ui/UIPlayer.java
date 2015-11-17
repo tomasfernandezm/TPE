@@ -21,11 +21,14 @@ public class UIPlayer {
 
     public void draw(UIManager uiManager){
 
-        score = "score: " + player.getMoney();
-
         uiManager.getBatch().begin();
-        bitmapFont.draw(uiManager.getBatch(),score, 530, 390);
+        bitmapFont.draw(uiManager.getBatch(),stringMoney(player.getMoney()) , 550, 350);
         uiManager.getBatch().end();
 
+    }
+
+    public String stringMoney(int money){
+        String a = "Money: " + money;
+        return a;
     }
 }

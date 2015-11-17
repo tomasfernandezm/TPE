@@ -96,7 +96,7 @@ public class UIManager implements GameListener {
 
         for (Rectangle r : path.getRectangles()){
             getShapeRenderer().setColor(Color.BLUE);
-            getShapeRenderer().begin(ShapeRenderer.ShapeType.Filled);
+            getShapeRenderer().begin(ShapeRenderer.ShapeType.Line);
             getShapeRenderer().rect(r.getX(),r.getY(),r.getWidth(),r.getHeight());
             getShapeRenderer().end();
         }
@@ -141,5 +141,6 @@ public class UIManager implements GameListener {
     public ShapeRenderer getShapeRenderer() {
         return shapeRenderer;
     }
-    public void nada4(){}
+
 }
+

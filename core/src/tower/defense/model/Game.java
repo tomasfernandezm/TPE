@@ -88,6 +88,10 @@ public class Game {
 
     }
 
+    public Collection<Tower> getTowers(){
+        return towers;
+    }
+
     public void addGameListeners(GameListener gameListener) {
         listeners.add(gameListener);
     }

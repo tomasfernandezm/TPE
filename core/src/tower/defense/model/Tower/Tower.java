@@ -29,10 +29,10 @@ public class Tower extends Entity {
         getPosition().setCenter(center);
     }
 
-
     /*
     actualiza el target de la torre
      */
+
     @Override
     public void update(float timedelta) {
         timer += timedelta;
@@ -82,6 +82,7 @@ public class Tower extends Entity {
     /*
     está atacando si tiene target y éste no está muerto
      */
+
     public boolean isAttacking() {
         return target != null && !target.isKilled();
     }
