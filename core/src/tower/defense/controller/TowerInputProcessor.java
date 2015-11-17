@@ -5,8 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.Vector2;
 import tower.defense.model.Game;
-import tower.defense.model.Tower.SimpleTower;
-import tower.defense.model.Tower.Tower;
+import tower.defense.model.Tower.*;
 import tower.defense.ui.UIManager;
 
 /**
@@ -25,9 +24,26 @@ public class TowerInputProcessor extends MyInputProcessor implements com.badlogi
     @Override
     public boolean keyDown(int keycode) {
         if (keycode == 45) {
-            game.addTower(new SimpleTower(new Vector2(100, 300), game));
-            System.out.println("Tower added");
+            game.addTower(new SimpleTower(new Vector2(Gdx.input.getX(), 500-Gdx.input.getY()), game));
+            System.out.println("Simple Tower added");
         }
+        if (keycode == 51){
+            game.addTower(new AreaTower(new Vector2(Gdx.input.getX(), 500-Gdx.input.getY()), game));
+            System.out.println("Area Tower added");
+        }
+        if (keycode == 33){
+            game.addTower(new BomberTower(new Vector2(Gdx.input.getX(), 500-Gdx.input.getY()), game));
+            System.out.println("Bomber Tower added");
+        }
+        if (keycode == 46){
+            game.addTower(new FreezeTower(new Vector2(Gdx.input.getX(), 500-Gdx.input.getY()), game));
+            System.out.println("Freeze Tower added");
+        }
+        if (keycode == 48){
+            game.addTower(new TeslaTower(new Vector2(Gdx.input.getX(), 500-Gdx.input.getY()), game));
+            System.out.println("Tesla Tower added");
+        }
+
         return true;
     }
 

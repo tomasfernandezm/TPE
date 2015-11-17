@@ -32,5 +32,4 @@ public class Path {
         return rectangleList;
     }
 
-    public void nada(){}
 }
