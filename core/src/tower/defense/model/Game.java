@@ -5,9 +5,9 @@ import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.Vector2;
 import tower.defense.model.Minion.Minion;
+import tower.defense.model.Minion.MultipleMinion;
 import tower.defense.model.Minion.RedMinion;
-import tower.defense.model.Tower.SimpleTower;
-import tower.defense.model.Tower.Tower;
+import tower.defense.model.Tower.*;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -34,9 +34,9 @@ public class Game {
     }
 
     public void init() {
-        addTower(new SimpleTower(new Vector2(200, 200), this));
+        addTower(new TeslaTower(new Vector2(200, 200), this));
         addMinion(new RedMinion(new Vector2(25, 75), this, path));
-        addMinion(new RedMinion(new Vector2(10, 75), this, path));
+        addMinion(new MultipleMinion(new Vector2(0, 75), this, path));
     }
 
     public void update(Graphics graphics) {

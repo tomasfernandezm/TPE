@@ -13,9 +13,11 @@ import com.badlogic.gdx.math.Vector2;
 import tower.defense.model.Entity;
 import tower.defense.model.GameListener;
 import tower.defense.model.Minion.Minion;
+import tower.defense.model.Minion.MultipleMinion;
+import tower.defense.model.Minion.RedMinion;
 import tower.defense.model.Path;
 import tower.defense.model.Player;
-import tower.defense.model.Tower.Tower;
+import tower.defense.model.Tower.*;
 
 import java.util.HashMap;
 
@@ -33,8 +35,14 @@ public class UIManager implements GameListener {
     /*
     imagenes de las entidades
      */
-    private Texture towerTexture;
-    private Texture minionTexture;
+    private Texture SimpleTowerTexture;
+    private Texture AreaTowerTexture;
+    private Texture BomberTowerTexture;
+    private Texture FrezzeTowerTexture;
+    private Texture TeslaTowerTexture;
+    private Texture RedMinionTexture;
+    private Texture MultipleMinionTexture;
+    private Texture ElectricMinionTexture;
     private Texture background;
     private Texture background2;
     private Texture rectan;
@@ -69,8 +77,15 @@ public class UIManager implements GameListener {
     public UIManager() {
         background = new Texture("core/assets/tdfback.png");
         background2 = new Texture("core/assets/black.png");
-        towerTexture = new Texture("core/assets/AreaTower.png");
-        minionTexture = new Texture("core/assets/RedMinion.png");
+        SimpleTowerTexture = new Texture("core/assets/SimpleTower.png");
+        AreaTowerTexture = new Texture("core/assets/AreaTower.png");
+        BomberTowerTexture = new Texture("core/assets/BomberTower.png");
+        FrezzeTowerTexture = new Texture("core/assets/FrezzeTower.png");
+        TeslaTowerTexture = new Texture("core/assets/ElectricTower.png");
+        RedMinionTexture = new Texture("core/assets/RedMinion.png");
+        MultipleMinionTexture = new Texture("core/assets/MultipleMinion.png");
+        ElectricMinionTexture = new Texture("core/assets/ElectricMinion.png");
+
         //rectan = new Texture("assets/rect.png");
 
 
@@ -123,7 +138,20 @@ public class UIManager implements GameListener {
      */
     @Override
     public void towerAdded(Tower tower) {
-        entities.put(tower, new UITowerEntity<Tower>(towerTexture, tower));
+        if(tower instanceof SimpleTower) {
+            entities.put(tower, new UITowerEntity<Tower>(SimpleTowerTexture, tower));
+
+        }else if(tower instanceof AreaTower){
+            entities.put(tower, new UITowerEntity<Tower>(AreaTowerTexture, tower));
+
+        }else if(tower instanceof BomberTower){
+            entities.put(tower, new UITowerEntity<Tower>(BomberTowerTexture, tower));
+
+        }else if(tower instanceof FreezeTower){
+            entities.put(tower, new UITowerEntity<Tower>(FrezzeTowerTexture, tower));
+        }else
+            entities.put(tower, new UITowerEntity<Tower>(TeslaTowerTexture, tower));
+
     }
 
     /*
@@ -131,7 +159,13 @@ public class UIManager implements GameListener {
      */
     @Override
     public void minionAdded(Minion minion) {
-        entities.put(minion, new UIEntity<Minion>(minionTexture, minion));
+        if (minion instanceof RedMinion ) {
+            entities.put(minion, new UIEntity<Minion>(RedMinionTexture, minion));
+        }else if(minion instanceof MultipleMinion){
+            entities.put(minion, new UIEntity<Minion>(MultipleMinionTexture, minion));
+        }else{
+            entities.put(minion, new UIEntity<Minion>(ElectricMinionTexture, minion));
+        }
     }
 
     public SpriteBatch getBatch() {
