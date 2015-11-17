@@ -40,29 +40,32 @@ public class Game {
     }
 
     public void update(Graphics graphics) {
-        for(Tower t: towers) {
-            t.update(graphics.getDeltaTime());
-        }
-        for(Minion m: minions) {
-            m.update(graphics.getDeltaTime());
-            if (m.isKilled()) {
-                player.addMoney(m.getType());
-                player.increaseScore(m.getType());
-                player.printString();
-                minionsToRemove.add(m);
-                for (GameListener gl : listeners)
-                    gl.minionKilled(m);
+
+            for (Tower t : towers) {
+                t.update(graphics.getDeltaTime());
             }
-            if (m.isReachEnd()) {
-                player.spendLife(m.getType());
-                minionsToRemove.add(m);
-                player.printString();
-                for (GameListener gl : listeners)
-                    gl.minionKilled(m);
+            for (Minion m : minions) {
+                m.update(graphics.getDeltaTime());
+                if (m.isKilled()) {
+                    player.addMoney(m.getType());
+                    player.increaseScore(m.getType());
+                    player.printString();
+                    minionsToRemove.add(m);
+                    for (GameListener gl : listeners)
+                        gl.minionKilled(m);
+                }
+                if (m.isReachEnd()) {
+                    player.spendLife(m.getType());
+                    minionsToRemove.add(m);
+                    player.printString();
+                    for (GameListener gl : listeners)
+                        gl.minionKilled(m);
+                }
             }
+            minions.removeAll(minionsToRemove);
+
+
         }
-        minions.removeAll(minionsToRemove);
-    }
 
     public Vector2 getBoundaries() {
         return boundaries;

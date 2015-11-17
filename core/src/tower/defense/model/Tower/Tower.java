@@ -15,8 +15,8 @@ public class Tower extends Entity {
     private float range;
     private float delay;
     private float timer = 0;
-    private final static float WIDTH = 20;
-    private final static float HEIGHT = 37;
+    private final static float WIDTH = 40;
+    private final static float HEIGHT = 40;
     protected Projectile projectile;
     private int upgradeSpeed = 0;
     private int upgradeRange = 0;

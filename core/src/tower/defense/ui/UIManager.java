@@ -69,7 +69,7 @@ public class UIManager implements GameListener {
     public UIManager() {
         background = new Texture("core/assets/tdfback.png");
         background2 = new Texture("core/assets/black.png");
-        towerTexture = new Texture("core/assets/red.png");
+        towerTexture = new Texture("core/assets/AreaTower.png");
         minionTexture = new Texture("core/assets/brazuca-02.png");
         //rectan = new Texture("assets/rect.png");
 
