@@ -5,7 +5,5 @@ package tower.defense.model.Tower.Proyectile;
  */
 public class ElectricRay extends Projectile {
 
-    public ElectricRay(){
-        damage = 20;
-    }
+    public ElectricRay(){super(20); }
 }

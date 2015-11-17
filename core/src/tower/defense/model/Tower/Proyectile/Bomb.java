@@ -1,18 +1,14 @@
 package tower.defense.model.Tower.Proyectile;
 
 /**
- * Created by Tomi on 08/11/2015.
- */
-
-/*
-proyectil del cañon, falta terminar
+ * Created by tomifor on 17/11/15.
  */
 public class Bomb extends Projectile {
 
     private double range;
 
     public Bomb(){
-        damage = 10;
+        super(10);
         range = 10;
     }
 
@@ -20,3 +16,4 @@ public class Bomb extends Projectile {
         return range;
     }
 }
+

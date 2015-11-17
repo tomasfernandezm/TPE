@@ -15,7 +15,6 @@ congela a los enemigos, falta terminar
 public class FreezeTower extends Tower {
 
     public FreezeTower(Vector2 center, Game game){
-        super(center, game);
-        proyectil = new FreezeRay();
+        super(center, game, 100, 3, new FreezeRay());
     }
 }

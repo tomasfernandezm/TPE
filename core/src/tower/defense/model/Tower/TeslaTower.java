@@ -15,7 +15,6 @@ torre eléctrica, usa rayos, falta terminar.
 public class TeslaTower extends Tower {
 
     public TeslaTower(Vector2 center, Game game){
-        super(center, game);
-        proyectil = new ElectricRay();
+        super(center, game, 100, 1, new ElectricRay());
     }
 }

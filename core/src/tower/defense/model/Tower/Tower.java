@@ -12,21 +12,25 @@ import java.util.List;
  * Created by Tomi on 08/11/2015.
  */
 public class Tower extends Entity {
-    private float range = 100;
-    private float delay = 1;
+    private float range;
+    private float delay;
     private float timer = 0;
-    private int damage = 1;
     private final static float WIDTH = 20;
     private final static float HEIGHT = 37;
-    protected Projectile proyectil;
-
+    protected Projectile projectile;
+    private int upgradeSpeed = 0;
+    private int upgradeRange = 0;
+    private int upgradeDamage = 0;
     private Minion target;
 
-    public Tower(Vector2 center, Game game) {
+    public Tower(Vector2 center, Game game, float range, float delay, Projectile projectile) {
         super(game);
         getPosition().setHeight(HEIGHT);
         getPosition().setWidth(WIDTH);
         getPosition().setCenter(center);
+        this.range = range;
+        this.delay= delay;
+        this.projectile = projectile;
     }
 
     /*
@@ -94,11 +98,28 @@ public class Tower extends Entity {
         return range;
     }
 
+    public void setRange(float range) {
+        this.range = range;
+    }
+
+    public void upgradeRange(){
+        upgradeRange++;
+        setRange(getRange()*2);
+    }
+
     /*
     ataca al minion mediante el método damage que tiene éste. Se le pasa un int que es la cantidad de puntos que
     le saca.
      */
     public void attack(Minion minion) {
-        minion.damage(proyectil.getDamage());
+        minion.damage(projectile);
+    }
+
+    public float getDelay() {
+        return delay;
+    }
+
+    public void setDelay(float delay) {
+        this.delay = delay;
     }
 }

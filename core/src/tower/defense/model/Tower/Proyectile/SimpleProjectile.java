@@ -6,6 +6,6 @@ package tower.defense.model.Tower.Proyectile;
 public class SimpleProjectile extends Projectile{
 
     public SimpleProjectile(){
-        damage = 100;
+        super(100);
     }
 }

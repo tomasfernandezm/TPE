@@ -6,6 +6,6 @@ package tower.defense.model.Tower.Proyectile;
 public class FreezeRay extends Projectile{
 
     public FreezeRay(){
-        damage = 0;
+        super(0);
     }
 }

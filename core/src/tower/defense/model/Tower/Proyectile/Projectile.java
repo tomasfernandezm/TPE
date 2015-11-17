@@ -7,8 +7,8 @@ public abstract class Projectile {
 
     protected int damage;
 
-    public Projectile(){
-
+    public Projectile(int damage){
+        this.damage = damage;
     }
 
     public int getDamage(){

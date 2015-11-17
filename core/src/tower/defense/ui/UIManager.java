@@ -55,7 +55,7 @@ public class UIManager implements GameListener {
 
     private UIPlayer uiPlayer = new UIPlayer(player);
 
-    private Path path = new Path();
+    private Path path = Path.pathGetInstance();
 
     /*
     retorna los boundaries

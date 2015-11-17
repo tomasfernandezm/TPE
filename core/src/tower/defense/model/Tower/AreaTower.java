@@ -14,8 +14,6 @@ torre que ataca a varios enemigos a la vez, falta terminar, usa proyectil simple
 public class AreaTower extends Tower{
 
     public AreaTower(Vector2 center, Game game){
-        super(center, game);
-        proyectil = new SimpleProjectile();
-        System.out.println("Probando");
+        super(center, game, 100, 1, new SimpleProjectile());
     }
 }

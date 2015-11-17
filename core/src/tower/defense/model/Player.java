@@ -7,12 +7,22 @@ public class Player {
 
     private int money;
     private int level;
+    private double score;
     private int lives;
 
     public Player(){
-        money = 0;
+        money = 100;
         level = 1;
         lives = 50;
+        score = 0;
+    }
+
+    public double getScore() {
+        return score;
+    }
+
+    public void increaseScore(int typeOfMinion) {
+        this.score += getMoney()*getLevel() * getLives()* typeOfMinion/10;
     }
 
     public int getLives() {
@@ -31,16 +41,15 @@ public class Player {
         return lives <= 0;
     }
 
-    public void spendLife() {
-        lives--;
+    public void spendLife(int typeOfMinion) {
+        lives -= typeOfMinion;
     }
 
-    public void addMoney(int money){
-        this.money = getMoney() + money;
+    public void addMoney(int typeOfMinion){
+        money += typeOfMinion*50;
     }
 
     public void printString(){
-        System.out.println("Vida: " + getLives() + " Plata: " + getMoney());
+        System.out.println("Vida: " + getLives() + ", Plata: " + getMoney() + ", Nivel: " + getLevel() + ", Score: " + getScore());
     }
-    public void nada5(){}
 }
