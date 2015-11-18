@@ -5,8 +5,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.Vector2;
 import tower.defense.model.Game;
+import tower.defense.model.Player;
 import tower.defense.model.Tower.*;
 import tower.defense.ui.UIManager;
+import tower.defense.ui.UIPlayer;
 
 /**
  * Created by Tomi on 13/11/2015.
@@ -16,13 +18,17 @@ public class TowerInputProcessor extends MyInputProcessor implements com.badlogi
     UIManager uiManager;
     tower.defense.model.Game game;
 
+
+
     public TowerInputProcessor(UIManager uiManager, Game game) {
         this.uiManager = uiManager;
         this.game = game;
+
     }
 
     @Override
     public boolean keyDown(int keycode) {
+
         if (keycode == 45) {
             game.addTower(new SimpleTower(new Vector2(Gdx.input.getX(), 500-Gdx.input.getY()), game));
             System.out.println("Simple Tower added");
