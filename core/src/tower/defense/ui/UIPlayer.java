@@ -22,7 +22,7 @@ public class UIPlayer {
     public void draw(UIManager uiManager){
 
         uiManager.getBatch().begin();
-        bitmapFont.draw(uiManager.getBatch(),stringMoney(player.getMoney()) , 550, 350);
+        bitmapFont.draw(uiManager.getBatch(),new String("Money: " + player.getMoney()) , 550, 350);
         uiManager.getBatch().end();
 
     }

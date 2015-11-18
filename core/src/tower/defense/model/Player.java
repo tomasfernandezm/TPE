@@ -11,7 +11,7 @@ public class Player {
     private int lives;
 
     public Player(){
-        money = 100;
+        money = 0;
         level = 1;
         lives = 1;
         score = 0;
