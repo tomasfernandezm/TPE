@@ -19,13 +19,14 @@ public abstract class Tower extends Entity {
     private final static float WIDTH = 40;
     private final static float HEIGHT = 40;
     protected Projectile projectile;
+    private int price;
     private boolean upgradeSpeed = false;
     private boolean upgradeRange = false;
     private boolean upgradeDamage = false;
-    private Minion target;
-    private List<Minion> inRange;
+    private List<Minion> inRange = getGame().getMinionsInRange(this);
+    private boolean multiple = false;
 
-    public Tower(Vector2 center, Game game, float range, float delay, Projectile projectile) {
+    public Tower(Vector2 center, Game game, float range, float delay, Projectile projectile, int price) {
         super(game);
         getPosition().setHeight(HEIGHT);
         getPosition().setWidth(WIDTH);
@@ -33,18 +34,29 @@ public abstract class Tower extends Entity {
         this.range = range;
         this.delay= delay;
         this.projectile = projectile;
+        this.price = price;
+    }
+
+    public void beMultiple() {
+        multiple = true;
     }
 
     /*
-    actualiza el target de la torre
-     */
-    public abstract void update(float timedelta);
+        actualiza el target de la torre
+         */
 
-    protected void updateSimple(float timedelta) {
+    public void update(float timedelta) {
         timer += timedelta;
-
-        if(timer > delay) {
-            if(target != null && getDistance(target) > range) {
+        inRange = getGame().getMinionsInRange(this);
+        if (timer > delay) {
+            if (!inRange.isEmpty()) {
+                if (multiple) {
+                    attack(inRange);
+                } else {
+                    attack(inRange.get(0));
+                }
+            }
+         /*   if(target != null && getDistance(target) > range) {
                 target = null;
             }
             if(target == null || target.isKilled()) {
@@ -60,34 +72,33 @@ public abstract class Tower extends Entity {
                 if(target.isKilled()) {
                     target = null;
                 }
-            }
-            timer = 0;
-        }
-
-    }
-
-    protected void updateMultiple(float timedelta){
-        timer += timedelta;
-        inRange = getGame().getMinionsInRange(this);
-
-        if(timer > delay){
-            if(!inRange.isEmpty() && !inRange.get(0).isKilled()){
-                attack(inRange);
-                if(inRange.get(0).isKilled()){
-                    inRange.clear();
-                    inRange = getGame().getMinionsInRange(this);
-                }
-            }
+            }*/
             timer = 0;
         }
     }
+
+
+
+//    protected void updateMultiple(float timedelta){
+//        timer += timedelta;
+//        inRange = getGame().getMinionsInRange(this);
+//
+//        if(timer > delay){
+//            if(!inRange.isEmpty()){
+//                attack(inRange);
+//            }
+//        }
+//        timer = 0;
+//    }
+
 
     /*
     está atacando si tiene target y éste no está muerto
      */
 
     public boolean isAttacking() {
-        return target != null && !target.isKilled();
+//        return target != null && !target.isKilled();
+        return !inRange.isEmpty();
     }
 
     /*
@@ -152,4 +163,5 @@ public abstract class Tower extends Entity {
     public void setDelay(float delay) {
         this.delay = delay;
     }
+    public int getPrice(){return price;}
 }

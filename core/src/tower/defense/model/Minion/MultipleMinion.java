@@ -9,7 +9,7 @@ import tower.defense.model.Path;
  */
 public class MultipleMinion extends Minion{
     public MultipleMinion(Vector2 center, Game game, Path path) {
-        super(center, game, path,3000);
+        super(center, game, path,3);
     }
 
     @Override

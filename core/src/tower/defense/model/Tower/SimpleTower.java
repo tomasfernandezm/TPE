@@ -14,11 +14,7 @@ proyectil de la torre simple, usa pryectil simple, falta terminar
 public class SimpleTower extends Tower{
 
     public SimpleTower(Vector2 center, Game game){
-        super(center, game, 100, 1, new SimpleProjectile());
+        super(center, game, 100, 1, new SimpleProjectile(),100);
     }
 
-    @Override
-    public void update(float timedelta) {
-        updateSimple(timedelta);
-    }
 }
