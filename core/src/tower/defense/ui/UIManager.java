@@ -45,7 +45,6 @@ public class UIManager implements GameListener {
     private Texture ElectricMinionTexture;
     private Texture background;
     private Texture background2;
-    private Texture rectan;
 
     private Sound minionKilled = Gdx.audio.newSound(Gdx.files.internal("core/assets/facebook_ringtone_pop.mp3"));
     /*
@@ -75,7 +74,7 @@ public class UIManager implements GameListener {
     crea las texturas e inicia los objetos para graficar
      */
     public UIManager() {
-        background = new Texture("core/assets/tdfback.png");
+        background = new Texture("core/assets/anback.png");
         background2 = new Texture("core/assets/black.png");
         SimpleTowerTexture = new Texture("core/assets/SimpleTower.png");
         AreaTowerTexture = new Texture("core/assets/AreaTower.png");
@@ -108,7 +107,7 @@ public class UIManager implements GameListener {
         batch.begin();
         batch.draw(background, 0, 0, 500, Gdx.graphics.getHeight());
         batch.draw(background2, 500, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-
+//        for(int i=0; i<path.getRectangles().size()-1; i++){
         for (Rectangle r : path.getRectangles()){
             getShapeRenderer().setColor(Color.BLUE);
             getShapeRenderer().begin(ShapeRenderer.ShapeType.Line);

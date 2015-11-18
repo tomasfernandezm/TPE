@@ -45,9 +45,11 @@ public class Player {
         lives -= typeOfMinion;
     }
 
-    public void addMoney(int typeOfMinion){
+    public void addMoneyMinionKill(int typeOfMinion){
         money += typeOfMinion*50;
     }
+
+    public void addMoney(int money){ this.money += money; }
 
     public void printString(){
         System.out.println("Vida: " + getLives() + ", Plata: " + getMoney() + ", Nivel: " + getLevel() + ", Score: " + getScore());

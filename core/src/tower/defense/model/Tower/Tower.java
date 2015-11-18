@@ -5,23 +5,25 @@ import tower.defense.model.Entity;
 import tower.defense.model.Game;
 import tower.defense.model.Minion.Minion;
 import tower.defense.model.Tower.Proyectile.Projectile;
+import tower.defense.model.Player;
 
 import java.util.List;
 
 /**
  * Created by Tomi on 08/11/2015.
  */
-public class Tower extends Entity {
+public abstract class Tower extends Entity {
     private float range;
     private float delay;
     private float timer = 0;
     private final static float WIDTH = 40;
     private final static float HEIGHT = 40;
     protected Projectile projectile;
-    private int upgradeSpeed = 0;
-    private int upgradeRange = 0;
-    private int upgradeDamage = 0;
+    private boolean upgradeSpeed = false;
+    private boolean upgradeRange = false;
+    private boolean upgradeDamage = false;
     private Minion target;
+    private List<Minion> inRange;
 
     public Tower(Vector2 center, Game game, float range, float delay, Projectile projectile) {
         super(game);
@@ -36,51 +38,48 @@ public class Tower extends Entity {
     /*
     actualiza el target de la torre
      */
+    public abstract void update(float timedelta);
 
-    @Override
-    public void update(float timedelta) {
+    protected void updateSimple(float timedelta) {
         timer += timedelta;
 
-        /*
-        si el timer es mayor al delay y tiene un target pero la distancia entre el target y la torre es
-        mayor al rango de la torre entonces vuelve a setear el target en null
-         */
         if(timer > delay) {
             if(target != null && getDistance(target) > range) {
                 target = null;
             }
-
-
-            /*
-            si no tiene target o el target está muerto, busca en la lista de Minions uno que esté en rango
-            si la lista no está vacía, entonces agarra el primero.
-             */
             if(target == null || target.isKilled()) {
-                List<Minion> inRange = getGame().getMinionsInRange(this);
+                inRange = getGame().getMinionsInRange(this);
 
                 if (!inRange.isEmpty()) {
                     target = inRange.get(0);
                 }
             }
-
-            /*
-            si hay target y no está muerto, entonces ataca, si después de atacar etá muerto,
-            entonces lo vuelve a null.
-             */
             if(target != null && !target.isKilled()) {
                 attack(target);
 
                 if(target.isKilled()) {
                     target = null;
                 }
-
             }
-            /*
-            vuelve el timer a 0
-             */
             timer = 0;
         }
 
+    }
+
+    protected void updateMultiple(float timedelta){
+        timer += timedelta;
+        inRange = getGame().getMinionsInRange(this);
+
+        if(timer > delay){
+            if(!inRange.isEmpty() && !inRange.get(0).isKilled()){
+                attack(inRange);
+                if(inRange.get(0).isKilled()){
+                    inRange.clear();
+                    inRange = getGame().getMinionsInRange(this);
+                }
+            }
+            timer = 0;
+        }
     }
 
     /*
@@ -101,11 +100,36 @@ public class Tower extends Entity {
     public void setRange(float range) {
         this.range = range;
     }
+/*
 
     public void upgradeRange(){
-        upgradeRange++;
-        setRange(getRange()*2);
+        if(!upgradeRange) {
+            if(Player.getMoney() >= 100) {
+                upgradeRange = true;
+                setRange(getRange() * 2);
+                Player.addMoney(-100);
+            }
+        }
     }
+    public void upgradeSpeed(){
+        if(!upgradeSpeed) {
+            if (Player.getMoney() >= 200) {
+                upgradeSpeed = true;
+                setDelay(getDelay() / 2);
+                Player.addMoney(-200);
+            }
+        }
+    }
+    public void upgradeDamage(){
+        if(!upgradeDamage) {
+            if (Player.getMoney() >= 300) {
+                upgradeDamage = true;
+                projectile.upgradeDamage();
+                Player.addMoney(-300);
+            }
+        }
+    }
+*/
 
     /*
     ataca al minion mediante el método damage que tiene éste. Se le pasa un int que es la cantidad de puntos que
@@ -113,6 +137,12 @@ public class Tower extends Entity {
      */
     public void attack(Minion minion) {
         minion.damage(projectile);
+    }
+
+    public void attack(List<Minion> targets){
+        for(Minion m : targets){
+            m.damage(projectile);
+        }
     }
 
     public float getDelay() {

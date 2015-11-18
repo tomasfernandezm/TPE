@@ -14,6 +14,11 @@ tira bombas, falta terminar
 public class BomberTower extends Tower {
 
     public BomberTower(Vector2 center, Game game){
-        super(center, game, 100, 1, new Bomb());
+        super(center, game, 150, 5, new Bomb());
+    }
+
+    @Override
+    public void update(float timedelta) {
+        updateSimple(timedelta);
     }
 }
