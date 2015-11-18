@@ -27,6 +27,7 @@ public abstract class Minion extends Entity {
     private int collisions = 0;
     private Path path;
     private float slowFactor;
+    private int velocityMagnitude = 2;
     private float slowTimer;
 
     public Minion(Vector2 center, Game game, Path path, int hitpoints, Vector2 velocity) {
@@ -39,7 +40,7 @@ public abstract class Minion extends Entity {
         this.path = path;
     }
     public Minion(Vector2 center, Game game, Path Path, int hitpoints){
-        this(center, game, Path, hitpoints, new Vector2(2f, 0f));
+        this(center, game, Path, hitpoints, new Vector2(1f, 0f));
     }
 
 
@@ -52,17 +53,17 @@ public abstract class Minion extends Entity {
         if (isKilled()) {
             return;
         }
-        velocity.scl(slowMinion(timedelta),slowMinion(timedelta));
-        move();
+        path.rotate(this);
 
-//        velocity.x = velocity.x*slowMinion(timedelta);
-//        velocity.y = velocity.y*slowMinion(timedelta);
     }
 
+    public void setVelocity(Vector2 velocity) {
+        this.velocity = velocity;
+    }
 
     /*
-    devuelve true o false si el minion está muerto o llega al final
-     */
+        devuelve true o false si el minion está muerto o llega al final
+         */
     public boolean isKilled() {
         return killed;
     }
@@ -96,28 +97,26 @@ public abstract class Minion extends Entity {
         //System.out.println(velocity.angle(new Vector2(100,100)));
     }
 
-    /*
-    nose que hace
-     */
-    public void death() {
-        Minion minion = new RedMinion(getPosition().getCenter(new Vector2(0,400)), getGame(),path);
-
-        if(minion.velocity.x > 0) {
-            minion.velocity.x *= -1;
-        }
-        getGame().addMinion(minion);
-    }
-    private void changeInX(){
+    public void changeInX(){
         inX = !inX;
     }
 
+    public boolean isInX() {
+        return inX;
+    }
+
+    private Vector2 velocity(){
+       return velocity.scl(velocityMagnitude);
+    }
     private void move(){
+
 
         Vector2 vect = new Vector2();
         getPosition().getCenter(vect);
         vect.add(velocity);
+        path.rotate(this);
 
-        for(int i = 0;i<path.getRectangles().size();i++){
+/*        for(int i = 0;i<path.getRectangles().size();i++){
             if(this.getPosition().overlaps(path.getRectangles().get(i))){
                 if(i==25 || i==22 || i == 38){
                     velocity.rotate(-90);
@@ -136,7 +135,7 @@ public abstract class Minion extends Entity {
                 }
             }
 
-        }
+        }*/
 
         getPosition().setCenter(vect);
     }

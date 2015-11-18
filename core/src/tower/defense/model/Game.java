@@ -37,7 +37,7 @@ public class Game {
     }
 
     public void init() {
-        addTower(new AreaTower(new Vector2(200, 200), this));
+//        addTower(new SimpleTower(new Vector2(200, 200), this));
         addMinion(new RedMinion(new Vector2(25, 75), this, path));
         addMinion(new RedMinion(new Vector2(10, 75), this, path));
         addMinion(new RedMinion(new Vector2(0, 75), this, path));
@@ -84,9 +84,12 @@ public class Game {
     }
 
     public void addTower(Tower tower) {
-        this.towers.add(tower);
-        for(GameListener gl: listeners)
-            gl.towerAdded(tower);
+        if(path.contains(tower) && player.getMoney() >= tower.getPrice()) {
+            this.towers.add(tower);
+            player.spendMoney(tower.getPrice());
+            for (GameListener gl : listeners)
+                gl.towerAdded(tower);
+        }
     }
 
     public void addMinion(Minion minion) {
