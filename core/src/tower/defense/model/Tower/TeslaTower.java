@@ -17,4 +17,9 @@ public class TeslaTower extends Tower {
     public TeslaTower(Vector2 center, Game game){
         super(center, game, 100, 1, new ElectricRay());
     }
+
+    @Override
+    public void update(float timedelta) {
+        updateSimple(timedelta);
+    }
 }

@@ -16,4 +16,9 @@ public class SimpleTower extends Tower{
     public SimpleTower(Vector2 center, Game game){
         super(center, game, 100, 1, new SimpleProjectile());
     }
+
+    @Override
+    public void update(float timedelta) {
+        updateSimple(timedelta);
+    }
 }

@@ -5,13 +5,19 @@ package tower.defense.model.Tower.Proyectile;
  */
 public abstract class Projectile {
 
-    protected int damage;
+    protected float damage;
 
-    public Projectile(int damage){
+    public Projectile(float damage){
         this.damage = damage;
     }
 
-    public int getDamage(){
+    public float getDamage(){
         return damage;
+    }
+
+    public void setDamage(float damage) {this.damage = damage;}
+
+    public void upgradeDamage(){
+        setDamage(getDamage()*2);
     }
 }

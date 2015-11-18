@@ -4,10 +4,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.Vector2;
+import tower.defense.model.Minion.ElectricMinion;
 import tower.defense.model.Minion.Minion;
 import tower.defense.model.Minion.MultipleMinion;
 import tower.defense.model.Minion.RedMinion;
-import tower.defense.model.Tower.*;
+import tower.defense.model.Tower.AreaTower;
+import tower.defense.model.Tower.SimpleTower;
+import tower.defense.model.Tower.Tower;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -34,38 +37,36 @@ public class Game {
     }
 
     public void init() {
-        addTower(new TeslaTower(new Vector2(200, 200), this));
+        addTower(new AreaTower(new Vector2(200, 200), this));
         addMinion(new RedMinion(new Vector2(25, 75), this, path));
-        addMinion(new MultipleMinion(new Vector2(0, 75), this, path));
+        addMinion(new RedMinion(new Vector2(10, 75), this, path));
+        addMinion(new RedMinion(new Vector2(0, 75), this, path));
     }
 
     public void update(Graphics graphics) {
-
-            for (Tower t : towers) {
-                t.update(graphics.getDeltaTime());
-            }
-            for (Minion m : minions) {
-                m.update(graphics.getDeltaTime());
-                if (m.isKilled()) {
-                    player.addMoney(m.getType());
-                    player.increaseScore(m.getType());
-                    player.printString();
-                    minionsToRemove.add(m);
-                    for (GameListener gl : listeners)
-                        gl.minionKilled(m);
-                }
-                if (m.isReachEnd()) {
-                    player.spendLife(m.getType());
-                    minionsToRemove.add(m);
-                    player.printString();
-                    for (GameListener gl : listeners)
-                        gl.minionKilled(m);
-                }
-            }
-            minions.removeAll(minionsToRemove);
-
-
+        for(Tower t: towers) {
+            t.update(graphics.getDeltaTime());
         }
+        for(Minion m: minions) {
+            m.update(graphics.getDeltaTime());
+            if (m.isKilled()) {
+                player.addMoneyMinionKill(m.getType());
+                player.increaseScore(m.getType());
+                player.printString();
+                minionsToRemove.add(m);
+                for (GameListener gl : listeners)
+                    gl.minionKilled(m);
+            }
+            if (m.isReachEnd()) {
+                player.spendLife(m.getType());
+                minionsToRemove.add(m);
+                player.printString();
+                for (GameListener gl : listeners)
+                    gl.minionKilled(m);
+            }
+        }
+        minions.removeAll(minionsToRemove);
+    }
 
     public Vector2 getBoundaries() {
         return boundaries;
@@ -102,5 +103,4 @@ public class Game {
     public void addGameListeners(GameListener gameListener) {
         listeners.add(gameListener);
     }
-    public void nada3(){}
 }
