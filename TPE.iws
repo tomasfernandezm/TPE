@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05f1f453-fabc-4095-9c1f-94ad40b48f68" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/tower/defense/controller/TextInputListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TPE.iml" afterPath="$PROJECT_DIR$/TPE.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TPE.ipr" afterPath="$PROJECT_DIR$/TPE.ipr" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TPE.iws" afterPath="$PROJECT_DIR$/TPE.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/tower/defense/model/Game.java" afterPath="$PROJECT_DIR$/core/src/tower/defense/model/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/tower/defense/model/Levels.java" afterPath="$PROJECT_DIR$/core/src/tower/defense/model/Levels.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/tower/defense/model/Player.java" afterPath="$PROJECT_DIR$/core/src/tower/defense/model/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/desktop/desktop.iml" afterPath="$PROJECT_DIR$/desktop/desktop.iml" />
     </list>
     <ignored path="TPE.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1660,7 +1653,7 @@
       <workItem from="1447947007795" duration="419000" />
       <workItem from="1447952213881" duration="29000" />
       <workItem from="1447952419753" duration="274000" />
-      <workItem from="1447952761828" duration="1129000" />
+      <workItem from="1447952761828" duration="1257000" />
     </task>
     <task id="LOCAL-00001" summary="JOJOJO">
       <created>1447818909438</created>
@@ -1686,11 +1679,17 @@
       <option name="project" value="LOCAL" />
       <updated>1447903963690</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Game over y pide nombre al empezar&#10;">
+      <created>1447953990409</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1447953990409</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59256000" />
+    <option name="totallyTimeSpent" value="59384000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1760,7 +1759,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="JOJOJO" />
-    <option name="LAST_COMMIT_MESSAGE" value="JOJOJO" />
+    <MESSAGE value="Game over y pide nombre al empezar&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Game over y pide nombre al empezar&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
