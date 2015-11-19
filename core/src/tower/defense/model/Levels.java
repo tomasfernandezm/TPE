@@ -34,6 +34,12 @@ public class Levels implements Iterable<Level>{
         }
     }
 
+    public void gameOver(){
+        for(int i = 0;i<size();i++){
+            levels.get(i).changeDone();
+        }
+    }
+
     public int size(){
         return levels.size();
     }

@@ -5,6 +5,7 @@ package tower.defense.model;
  */
 public class Player {
 
+    private String name;
     private int money;
     private int level;
     private double score;
@@ -52,6 +53,10 @@ public class Player {
     public void spendMoney(int money){ this.money -= money; }
 
     public void printString(){
-        System.out.println("Vida: " + getLives() + ", Plata: " + getMoney() + ", Nivel: " + getLevel() + ", Score: " + getScore());
+        System.out.println(name + " Vida: " + getLives() + ", Plata: " + getMoney() + ", Nivel: " + getLevel() + ", Score: " + getScore());
+    }
+
+    public void setName(String text){
+        name = text;
     }
 }

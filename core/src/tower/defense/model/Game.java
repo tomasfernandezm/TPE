@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.Vector2;
+import tower.defense.controller.TextInputListener;
 import tower.defense.model.Minion.ElectricMinion;
 import tower.defense.model.Minion.Minion;
 import tower.defense.model.Minion.MultipleMinion;
@@ -33,6 +34,7 @@ public class Game {
     private Levels levels = new Levels(this);
 
     private Vector2 boundaries;
+    private TextInputListener listener = new TextInputListener(player);
 
     public Game(Vector2 boundaries) {
         this.boundaries = boundaries;
@@ -41,9 +43,8 @@ public class Game {
         levels.addLevel(3, 3, 3);
 
     }
-
     public void init() {
-        levels.go();
+        Gdx.input.getTextInput(listener, "Enter Name: ", "Enter name here: ", "");
     }
 
     public void update(Graphics graphics) {
@@ -69,6 +70,9 @@ public class Game {
             }
         }
         minions.removeAll(minionsToRemove);
+        if(player.isOver()){
+            levels.gameOver();
+        }
     }
 
     public Vector2 getBoundaries() {
