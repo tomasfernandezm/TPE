@@ -18,7 +18,9 @@ import tower.defense.model.Minion.RedMinion;
 import tower.defense.model.Path;
 import tower.defense.model.Player;
 import tower.defense.model.Tower.*;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
+import java.awt.geom.Area;
 import java.io.ObjectInputStream;
 import java.util.HashMap;
 
@@ -76,6 +78,7 @@ public class UIManager implements GameListener {
     crea las texturas e inicia los objetos para graficar
      */
     public UIManager() {
+
         background = new Texture("core/assets/anback.png");
         background2 = new Texture("core/assets/black.png");
         SimpleTowerTexture = new Texture("core/assets/SimpleTower.png");
@@ -101,10 +104,22 @@ public class UIManager implements GameListener {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // This cryptic line clears the screen.
         camera.update();
         //batch.setProjectionMatrix(camera.combined);
-
+        BitmapFont bitmapFont = new BitmapFont();
+        bitmapFont.setColor(com.badlogic.gdx.graphics.Color.BLACK);
 
         batch.begin();
         batch.draw(background, 0, 0, 500, Gdx.graphics.getHeight());
+        batch.draw(SimpleTowerTexture,20,420, 50,50);
+        bitmapFont.draw(getBatch(),"$150", 30, 415);
+        batch.draw(AreaTowerTexture,120,420, 50,50);
+        bitmapFont.draw(getBatch(),"$300", 130, 415);
+        batch.draw(BomberTowerTexture,220,420, 50,50);
+        bitmapFont.draw(getBatch(),"$500", 230, 415);
+        batch.draw(FrezzeTowerTexture,320,420, 50,50);
+        bitmapFont.draw(getBatch(),"$600", 330, 415);
+        batch.draw(TeslaTowerTexture,420,420, 50,50);
+        bitmapFont.draw(getBatch(),"$700", 430, 415);
+
         batch.draw(background2, 500, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 //        for(int i=0; i<path.getRectangles().size()-1; i++){
         for (Rectangle r : path.getRectangles()){
