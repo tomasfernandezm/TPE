@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 import tower.defense.model.Entity;
 import tower.defense.model.Game;
 import tower.defense.model.Minion.Minion;
+import tower.defense.model.Tower.Proyectile.Bomb;
 import tower.defense.model.Tower.Proyectile.Projectile;
 import tower.defense.model.Player;
 
@@ -26,6 +27,11 @@ public class Tower extends Entity {
     private List<Minion> inRange = getGame().getMinionsInRange(this);
     private boolean multiple = false;
     private Minion target;
+    private boolean bomber=false;
+
+    public void beBomber(){
+        bomber = true;
+    }
 
     public Tower(Vector2 center, Game game, float range, float delay, int price) {
         super(game);
@@ -53,8 +59,14 @@ public class Tower extends Entity {
                 if (multiple) {
                     attack(inRange);
                 } else {
-                    target = inRange.get(0);
-                    attack(target);
+                    if(bomber){
+                        target = inRange.get(0);
+                        attack(target);
+                        List<Minion> inRangeBomb = ((Bomb)projectile).getInRange();
+                        attack(inRangeBomb);
+                    }else{
+                        attack(inRange.get(0));
+                    }
                 }
             }
          /*   if(target != null && getDistance(target) > range) {

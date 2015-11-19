@@ -25,6 +25,8 @@ public class Bomb extends Projectile {
         return range;
     }
 
+    public List<Minion> getInRange() {return inRange;}
+
     public float getDistance(Entity entity) {
         Vector2 own = getTower().getTarget().getPosition().getCenter(new Vector2());
         Vector2 other = entity.getPosition().getCenter(new Vector2());
