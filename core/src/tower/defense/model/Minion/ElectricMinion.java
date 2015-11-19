@@ -12,4 +12,8 @@ public class ElectricMinion extends Minion{
         super(center, game, path,400);
         beElectric();
     }
+
+    public int getType(){
+        return 3;
+    }
 }

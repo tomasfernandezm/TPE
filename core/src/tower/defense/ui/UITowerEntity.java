@@ -35,4 +35,13 @@ public class UITowerEntity<T extends Tower> extends UIEntity<T> {
         uiManager.getShapeRenderer().circle(vect.x, vect.y, getModel().getRange());
         uiManager.getShapeRenderer().end();
     }
+
+    public void upgradeRange(UIManager uiManager){
+        uiManager.getShapeRenderer().setColor(Color.BLUE);
+        uiManager.getShapeRenderer().begin(ShapeRenderer.ShapeType.Line);
+        Vector2 vect = getModel().getPosition().getCenter(new Vector2());
+        uiManager.getShapeRenderer().circle(vect.x, vect.y, getModel().getRange()-50);
+        uiManager.getShapeRenderer().end();
+
+    }
 }

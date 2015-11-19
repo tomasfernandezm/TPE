@@ -13,7 +13,11 @@ public class RedMinion extends Minion{
     }
 
     public RedMinion(Vector2 center, Game game, Path path, Vector2 velocity) {
-        super(center, game, path, 200, velocity);
+        super(center, game, path, 1, velocity);
+    }
+
+    public int getType(){
+        return 1;
     }
 
 }

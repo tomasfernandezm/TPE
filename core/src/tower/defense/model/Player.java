@@ -12,9 +12,9 @@ public class Player {
     private int lives;
 
     public Player(){
-        money = 10000;
+        money = 500;
         level = 1;
-        lives = 1;
+        lives = 50;
         score = 0;
     }
 
@@ -32,6 +32,10 @@ public class Player {
 
     public int getMoney() {
         return money;
+    }
+
+    public void upLevel(){
+        level++;
     }
 
     public int getLevel() {
@@ -58,5 +62,9 @@ public class Player {
 
     public void setName(String text){
         name = text;
+    }
+
+    public String getName(){
+        return name;
     }
 }

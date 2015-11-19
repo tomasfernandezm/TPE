@@ -10,28 +10,31 @@ import tower.defense.model.Minion.Minion;
 import tower.defense.model.Minion.MultipleMinion;
 import tower.defense.model.Minion.RedMinion;
 import tower.defense.model.Tower.AreaTower;
+import tower.defense.model.Tower.Proyectile.Bomb;
+import tower.defense.model.Tower.Proyectile.Projectile;
 import tower.defense.model.Tower.SimpleTower;
 import tower.defense.model.Tower.Tower;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 
 /**
  * Created by Tomi on 08/11/2015.
  */
 public class Game {
-    private Collection<Tower> towers = new HashSet<Tower>();
+    private List<Tower> towers = new ArrayList<Tower>();
     private Collection<Minion> minions = new HashSet<Minion>();
     private Collection<Minion> minionsToRemove = new HashSet<Minion>();
+    private Collection<Projectile> projectiles = new HashSet<Projectile>();
+    private Collection<Projectile> projectilesToAdd = new HashSet<Projectile>();
+    private Collection<Projectile> projectilesToRemove = new HashSet<Projectile>();
 
     private List<GameListener> listeners = new LinkedList<GameListener>();
 
     private Player player = new Player();
     private Path path = Path.pathGetInstance();
     private Levels levels = new Levels(this);
+    private boolean gameOver = false;
 
     private Vector2 boundaries;
     private TextInputListener listener = new TextInputListener(player);
@@ -41,6 +44,8 @@ public class Game {
         levels.addLevel(3, 0, 0);
         levels.addLevel(3, 3, 0);
         levels.addLevel(3, 3, 3);
+        levels.addLevel(5, 5, 5);
+        levels.addLevel(6, 6, 6);
 
     }
     public void init() {
@@ -51,6 +56,18 @@ public class Game {
         for(Tower t: towers) {
             t.update(graphics.getDeltaTime());
         }
+
+        for(Projectile p: projectiles){
+            p.update(graphics.getDeltaTime());
+            if(p.hit()){
+                projectilesToRemove.add(p);
+            }
+        }
+        projectiles.removeAll(projectilesToRemove);
+        projectilesToRemove.clear();
+        projectiles.addAll(projectilesToAdd);
+        projectilesToAdd.clear();
+
         for(Minion m: minions) {
             m.update(graphics.getDeltaTime());
             if (m.isKilled()) {
@@ -70,10 +87,9 @@ public class Game {
             }
         }
         minions.removeAll(minionsToRemove);
-        if(player.isOver()){
-            levels.gameOver();
+        minionsToRemove.clear();
+        gameOver();
 
-        }
     }
 // probando
     public Vector2 getBoundaries() {
@@ -85,6 +101,17 @@ public class Game {
 
         for(Minion m:minions) {
             if (tower.getDistance(m) < tower.getRange()) {
+                ret.add(m);
+            }
+        }
+        return ret;
+    }
+
+    public List<Minion> getMinionInRange(Bomb bomb){
+        List<Minion> ret = new LinkedList<Minion>();
+
+        for(Minion m:minions){
+            if(bomb.getDistance(m) < bomb.getRange()){
                 ret.add(m);
             }
         }
@@ -107,7 +134,29 @@ public class Game {
 
     }
 
-    public Collection<Tower> getTowers(){
+    public void addProjectileToAdd(Projectile projectile){
+        projectilesToAdd.add(projectile);
+    }
+
+    public void addProjectile(Projectile projectile){
+        projectiles.add(projectile);
+    }
+
+    public void endMinion(){
+        minions.removeAll(minions);
+    }
+    public void gameOver(){
+        if(player.isOver() && gameOver==false){
+            levels.gameOver();
+            Score s = new Score((int)player.getScore(), player.getName());
+            SaveScore score = new SaveScore(s);
+            System.out.println("GAME OVER");
+            endMinion();
+            gameOver=true;
+        }
+    }
+
+    public List<Tower> getTowers(){
         return towers;
     }
 
@@ -121,6 +170,10 @@ public class Game {
 
     public Levels getLevels(){
         return levels;
+    }
+
+    public Player getPlayer(){
+        return player;
     }
 
 }

@@ -23,6 +23,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import java.awt.geom.Area;
 import java.io.ObjectInputStream;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Tomi on 08/11/2015.
@@ -101,11 +102,14 @@ public class UIManager implements GameListener {
     método de dibujo
      */
     public void draw() {
+        String msg;
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // This cryptic line clears the screen.
         camera.update();
         //batch.setProjectionMatrix(camera.combined);
         BitmapFont bitmapFont = new BitmapFont();
         bitmapFont.setColor(com.badlogic.gdx.graphics.Color.BLACK);
+        BitmapFont font = new BitmapFont();
+        font.setColor(Color.WHITE);
 
         batch.begin();
         batch.draw(background, 0, 0, 500, Gdx.graphics.getHeight());
@@ -114,27 +118,27 @@ public class UIManager implements GameListener {
         batch.draw(AreaTowerTexture,120,420, 50,50);
         bitmapFont.draw(getBatch(),"$300", 130, 415);
         batch.draw(BomberTowerTexture,220,420, 50,50);
-        bitmapFont.draw(getBatch(),"$500", 230, 415);
+        bitmapFont.draw(getBatch(),"$600", 230, 415);
         batch.draw(FrezzeTowerTexture,320,420, 50,50);
-        bitmapFont.draw(getBatch(),"$600", 330, 415);
+        bitmapFont.draw(getBatch(),"$400", 330, 415);
         batch.draw(TeslaTowerTexture,420,420, 50,50);
-        bitmapFont.draw(getBatch(),"$700", 430, 415);
+        bitmapFont.draw(getBatch(),"$800", 430, 415);
 
         batch.draw(background2, 500, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-//        for(int i=0; i<path.getRectangles().size()-1; i++){
-        for (Rectangle r : path.getRectangles()){
-            getShapeRenderer().setColor(Color.BLUE);
-            getShapeRenderer().begin(ShapeRenderer.ShapeType.Line);
-            getShapeRenderer().rect(r.getX(),r.getY(),r.getWidth(),r.getHeight());
-            getShapeRenderer().end();
-        }
+//      for(int i=0; i<path.getRectangles().size()-1; i++){
+//      for (Rectangle r : path.getRectangles())
+//  getShapeRenderer().begin(ShapeRenderer.ShapeType.Line);
+//          getShapeRenderer().rect(r.getX(),r.getY(),r.getWidth(),r.getHeight());
+//           getShapeRenderer().end();
+//    }
+        font.draw(batch, "Vidas: ", 525, 350);
+        msg = "" + player.getLives();
+        font.draw(batch, msg, 580, 350);
         batch.end();
 
         for(UIEntity uiEntity: entities.values()) {
             uiEntity.draw(this);
         }
-
-        uiPlayer.draw(this);
     }
 
     /*
@@ -191,11 +195,14 @@ public class UIManager implements GameListener {
 
     public Player GetPlayer(){return player;}
 
+    public UITowerEntity getEntity(Tower t){
+        return (UITowerEntity) entities.get(t);
+    }
 
-
-
-
-
+    public String stringMoney(int money){
+        String a = "Money: "+money;
+        return a;
+    }
 
 }
 

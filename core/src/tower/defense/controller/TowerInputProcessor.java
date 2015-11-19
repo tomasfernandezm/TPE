@@ -9,6 +9,7 @@ import tower.defense.model.Player;
 import tower.defense.model.Tower.*;
 import tower.defense.ui.UIManager;
 import tower.defense.ui.UIPlayer;
+import tower.defense.ui.UITowerEntity;
 
 /**
  * Created by Tomi on 13/11/2015.
@@ -52,6 +53,31 @@ public class TowerInputProcessor extends MyInputProcessor implements com.badlogi
         }
         if (keycode == 66){
             game.getLevels().go();
+        }
+        if (keycode == 8){
+            for(int i = 0;i<game.getTowers().size();i++){
+                if(game.getTowers().get(i).getPosition().contains(Gdx.input.getX(), 500-Gdx.input.getY())){
+                    game.getTowers().get(i).upgradeRange();
+                    uiManager.getEntity(game.getTowers().get(i)).upgradeRange(uiManager);
+                    System.out.println("Upgrade Range");
+                }
+            }
+        }
+        if (keycode == 9){
+            for(int i = 0;i<game.getTowers().size();i++){
+                if(game.getTowers().get(i).getPosition().contains(Gdx.input.getX(), 500-Gdx.input.getY())){
+                    game.getTowers().get(i).upgradeDamage();
+                    System.out.println("Upgrade Damage");
+                }
+            }
+        }
+        if (keycode == 10){
+            for(int i = 0;i<game.getTowers().size();i++){
+                if(game.getTowers().get(i).getPosition().contains(Gdx.input.getX(), 500-Gdx.input.getY())){
+                    game.getTowers().get(i).upgradeSpeed();
+                    System.out.println("Upgrade Speed");
+                }
+            }
         }
 
         return true;

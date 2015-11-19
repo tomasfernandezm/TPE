@@ -31,6 +31,7 @@ public class Levels implements Iterable<Level>{
         if(levelcount < size()) {
             levels.get(levelcount).go(0);
             levelcount++;
+            game.getPlayer().upLevel();
         }
     }
 

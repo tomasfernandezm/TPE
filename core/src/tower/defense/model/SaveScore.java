@@ -77,27 +77,30 @@ public class SaveScore {
     }
 
 
-    public LinkedList<Score> saveScoreList() throws IOException {
+    public void saveScoreList() throws IOException {
         readFile();
         makeList();
         bubble();
 
         String fileName = ("score.txt"); //nombre del archivo
+        File file = new File(fileName);
 
         BufferedWriter output = null;
         try {
-            File file = new File(fileName);
+            if (!file.exists()) {
+                PrintWriter writer = new PrintWriter(fileName);
+            }
+
             output = new BufferedWriter(new FileWriter(file));
 
-            for (int i=0; i< scoreList.size() && i<10 ; i++) {
+            for (int i = 0; i < scoreList.size() && i < 10; i++) {
                 output.write(scoreList.get(i).toString() + "\n");
             }
-        } catch (IOException e) {
+        } catch (IOException e){
             e.printStackTrace();
-        } finally {
-            if (output != null) output.close();
+        }finally{
+            if(output != null) output.close();
         }
-        return topTenList();
     }
 
     //hago la lista y

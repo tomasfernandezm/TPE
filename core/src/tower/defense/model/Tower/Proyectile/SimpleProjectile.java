@@ -2,6 +2,7 @@ package tower.defense.model.Tower.Proyectile;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import tower.defense.model.Minion.Minion;
 import tower.defense.model.Tower.Tower;
 
 /**
@@ -9,7 +10,11 @@ import tower.defense.model.Tower.Tower;
  */
 public class SimpleProjectile extends Projectile{
 
-    public SimpleProjectile(Tower tower){
-        super(100,tower);
+    public SimpleProjectile(Minion target, Tower tower, float damageFactor){
+        super(75, target, tower, damageFactor);
+    }
+
+    public void damage(){
+        getTarget().recieveDamage(getDamage());
     }
 }

@@ -24,14 +24,13 @@ public abstract class Minion extends Entity {
     private boolean slow = false;
     private boolean inX = true;
     private Vector2 velocity;
-    private int hitpoints;
-    private int collisions = 0;
+    private float hitpoints;
     private Path path;
     private float slowFactor;
     private int velocityMagnitude = 2;
     private float slowTimer;
 
-    public Minion(Vector2 center, Game game, Path path, int hitpoints, Vector2 velocity) {
+    public Minion(Vector2 center, Game game, Path path, float hitpoints, Vector2 velocity) {
         super(game);
         this.velocity = velocity;
         this.hitpoints = hitpoints;
@@ -40,8 +39,8 @@ public abstract class Minion extends Entity {
         getPosition().setCenter(center);
         this.path = path;
     }
-    public Minion(Vector2 center, Game game, Path Path, int hitpoints){
-        this(center, game, Path, hitpoints, new Vector2(1f, 0f));
+    public Minion(Vector2 center, Game game, Path path, int hitpoints){
+        this(center, game, path, hitpoints, new Vector2(1f, 0f));
     }
 
 
@@ -54,20 +53,29 @@ public abstract class Minion extends Entity {
         if (isKilled()) {
             return;
         }
+        if(getPosition().getCenter(new Vector2()).x > 475){
+            reachEnd = true;
+        }
         move();
-        if(time != 0){
+        if(time!=0){
             time -= timedelta;
-            if(time <= 0){
+            if(time<=0){
                 time =0;
                 slow = false;
                 velocity.scl(1/slowFactor);
-
             }
         }
-
     }
 
-    public void setVelocity(Vector2 velocity) {
+    public boolean isElectric(){
+        return electric;
+    }
+
+    public boolean isSlow(){
+        return slow;
+    }
+
+    public void setVelocity(Vector2 velocity){
         this.velocity = velocity;
     }
 
@@ -75,14 +83,14 @@ public abstract class Minion extends Entity {
         devuelve true o false si el minion está muerto o llega al final
          */
     public boolean isKilled() {
-        return killed;
+        return reachEnd;
     }
     public boolean isReachEnd(){ return reachEnd;}
 
     /*
     le quita puntos de vida al minion
      */
-    public void damage(Projectile projectile) {
+    /* public void damage(Projectile projectile) {
         if(projectile instanceof FreezeRay){
             if(!slow) {
                 slowTimer = ((FreezeRay) projectile).getSlowtimer();
@@ -106,9 +114,13 @@ public abstract class Minion extends Entity {
         }
         //System.out.println("Being attacked!");
         //System.out.println(velocity.angle(new Vector2(100,100)));
-    }
+    */
     private float time;
-    private void slow(){
+
+    public void slow(float slowFactor, float slowTimer){
+        this.slowTimer = slowTimer;
+        this.slowFactor = slowFactor;
+        slow = true;
         velocity.scl(slowFactor);
         time = slowTimer;
     }
@@ -148,79 +160,33 @@ public abstract class Minion extends Entity {
         getPosition().setCenter(vect);*/
 
 
-        for(int i = 0;i<path.getRectangles().size();i++){
-            if(this.getPosition().overlaps(path.getRectangles().get(i))){
-                if(i==25 || i==22 || i == 38){
+        for(int i = 0;i<path.getRectangles().size();i++) {
+            if (this.getPosition().overlaps(path.getRectangles().get(i))) {
+                if (i == 25 || i == 22 || i == 38) {
                     velocity.rotate(-90);
                     vect.add(velocity);
                     changeInX();
-                    collisions++;
-                }
-                if(i==3 || i==10 || i==45){
-                    velocity.rotate(90);
-                    vect.add(velocity);
-                    changeInX();
-                    collisions++;
-                }
-                if(i==54){
-                    reachEnd = true;
+
                 }
             }
-
         }
 
         getPosition().setCenter(vect);
     }
 
-    private float slowMinion(float timedelta){
-        if(slowTimer <= 0){
-            slow = false;
-//            normalVelocity();
-            return 1;
-        }
-        slowTimer = slowTimer - timedelta;
-        return slowFactor;
-    }
+
     protected void beElectric(){electric = true;}
 
     protected void die(){killed = true;}
 
     protected Path getPath(){return path;}
 
-    public int getType(){
-        if (this instanceof RedMinion){
-            return 1;
-        }else{
-            if (this instanceof MultipleMinion){
-                return 2;
-            }else{
-                return 3;
-            }
-        }
-    }
+    public abstract int getType();
 
     public Vector2 getVelocity(){ return velocity;}
 
-    private void normalVelocity(){
-//        float x = 2/(velocity.x + velocity.y);
-//        velocity.scl(x);
-                if(inX){
-            if((collisions == 0 || collisions == 12 || collisions == 18) && !(velocity.epsilonEquals(new Vector2(2f, 0f),1f))){
-                velocity = new Vector2(2f, 0f);
-            }else{
-                if (collisions == 6 && !(velocity.epsilonEquals(new Vector2(-2f, 0f),1f))){
-                    velocity = new Vector2(-2f, 0f);
-                }
-            }
-        }else{
-            if((collisions == 3 || collisions == 9) && !(velocity.epsilonEquals(new Vector2(0f, 2f),1f))){
-                velocity = new Vector2(0f, 2f);
-            }else{
-                if(collisions == 15 && !(velocity.epsilonEquals(new Vector2(0f, -2f),1f))){
-                    velocity = new Vector2(0f, -2f);
-                }
-            }
-        }
+    public void recieveDamage(float damage){
+        hitpoints -= damage;
     }
 }
 //if(inX && !(velocity.epsilonEquals(new Vector2(2f, 0f),1f))){
