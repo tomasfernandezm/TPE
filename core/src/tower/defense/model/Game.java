@@ -72,9 +72,10 @@ public class Game {
         minions.removeAll(minionsToRemove);
         if(player.isOver()){
             levels.gameOver();
+
         }
     }
-
+// probando
     public Vector2 getBoundaries() {
         return boundaries;
     }
