@@ -2,9 +2,11 @@ package tower.defense.model.Minion;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.TimeUtils;
 import tower.defense.model.Entity;
 import tower.defense.model.Game;
 import tower.defense.model.Path;
+import tower.defense.model.Tower.Proyectile.Bomb;
 import tower.defense.model.Tower.Proyectile.ElectricRay;
 import tower.defense.model.Tower.Proyectile.FreezeRay;
 import tower.defense.model.Tower.Proyectile.Projectile;
@@ -53,7 +55,16 @@ public abstract class Minion extends Entity {
         if (isKilled()) {
             return;
         }
-        path.rotate(this);
+        move();
+        if(time != 0){
+            time -= timedelta;
+            if(time <= 0){
+                time =0;
+                slow = false;
+                velocity.scl(1/slowFactor);
+
+            }
+        }
 
     }
 
@@ -78,16 +89,19 @@ public abstract class Minion extends Entity {
                 slowTimer = ((FreezeRay) projectile).getSlowtimer();
                 slowFactor = projectile.getDamage();
                 slow = true;
+                slow();
             }
         }else {
-            if (electric) {
-                if (projectile instanceof ElectricRay) {
-                    hitpoints -= projectile.getDamage() * 2;
+            if(projectile instanceof Bomb) {
+                if (electric) {
+                    if (projectile instanceof ElectricRay) {
+                        hitpoints -= projectile.getDamage() * 2;
+                    } else {
+                        hitpoints -= projectile.getDamage() / 4;
+                    }
                 } else {
-                    hitpoints -= projectile.getDamage() / 4;
+                    hitpoints -= projectile.getDamage();
                 }
-            } else {
-                hitpoints -= projectile.getDamage();
             }
             if (hitpoints <= 0) {
                 die();
@@ -95,6 +109,11 @@ public abstract class Minion extends Entity {
         }
         //System.out.println("Being attacked!");
         //System.out.println(velocity.angle(new Vector2(100,100)));
+    }
+    private float time;
+    private void slow(){
+        velocity.scl(slowFactor);
+        time = slowTimer;
     }
 
     public void changeInX(){
@@ -114,9 +133,25 @@ public abstract class Minion extends Entity {
         Vector2 vect = new Vector2();
         getPosition().getCenter(vect);
         vect.add(velocity);
-        path.rotate(this);
+/*        int rotate = path.rotate(this);
 
-/*        for(int i = 0;i<path.getRectangles().size();i++){
+        if (rotate == 1){
+            setVelocity(getVelocity().setAngle(270));
+        }
+        if (rotate == 2){
+            setVelocity(getVelocity().setAngle(90));
+        }
+        if (rotate == 3){
+            setVelocity(getVelocity().setAngle(180));
+        }
+        if (rotate == 4){
+            setVelocity(getVelocity().setAngle(0));
+        }
+        vect.add(velocity);
+        getPosition().setCenter(vect);*/
+
+
+        for(int i = 0;i<path.getRectangles().size();i++){
             if(this.getPosition().overlaps(path.getRectangles().get(i))){
                 if(i==25 || i==22 || i == 38){
                     velocity.rotate(-90);
@@ -135,7 +170,7 @@ public abstract class Minion extends Entity {
                 }
             }
 
-        }*/
+        }
 
         getPosition().setCenter(vect);
     }
@@ -143,7 +178,7 @@ public abstract class Minion extends Entity {
     private float slowMinion(float timedelta){
         if(slowTimer <= 0){
             slow = false;
-            normalVelocity();
+//            normalVelocity();
             return 1;
         }
         slowTimer = slowTimer - timedelta;
@@ -170,7 +205,9 @@ public abstract class Minion extends Entity {
     public Vector2 getVelocity(){ return velocity;}
 
     private void normalVelocity(){
-        if(inX){
+//        float x = 2/(velocity.x + velocity.y);
+//        velocity.scl(x);
+                if(inX){
             if((collisions == 0 || collisions == 12 || collisions == 18) && !(velocity.epsilonEquals(new Vector2(2f, 0f),1f))){
                 velocity = new Vector2(2f, 0f);
             }else{

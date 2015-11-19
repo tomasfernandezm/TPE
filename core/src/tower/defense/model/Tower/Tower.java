@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by Tomi on 08/11/2015.
  */
-public abstract class Tower extends Entity {
+public class Tower extends Entity {
     private float range;
     private float delay;
     private float timer = 0;
@@ -25,15 +25,15 @@ public abstract class Tower extends Entity {
     private boolean upgradeDamage = false;
     private List<Minion> inRange = getGame().getMinionsInRange(this);
     private boolean multiple = false;
+    private Minion target;
 
-    public Tower(Vector2 center, Game game, float range, float delay, Projectile projectile, int price) {
+    public Tower(Vector2 center, Game game, float range, float delay, int price) {
         super(game);
         getPosition().setHeight(HEIGHT);
         getPosition().setWidth(WIDTH);
         getPosition().setCenter(center);
         this.range = range;
         this.delay= delay;
-        this.projectile = projectile;
         this.price = price;
     }
 
@@ -53,7 +53,8 @@ public abstract class Tower extends Entity {
                 if (multiple) {
                     attack(inRange);
                 } else {
-                    attack(inRange.get(0));
+                    target = inRange.get(0);
+                    attack(target);
                 }
             }
          /*   if(target != null && getDistance(target) > range) {
@@ -77,9 +78,11 @@ public abstract class Tower extends Entity {
         }
     }
 
+    public Minion getTarget() {
+        return target;
+    }
 
-
-//    protected void updateMultiple(float timedelta){
+    //    protected void updateMultiple(float timedelta){
 //        timer += timedelta;
 //        inRange = getGame().getMinionsInRange(this);
 //
@@ -111,36 +114,30 @@ public abstract class Tower extends Entity {
     public void setRange(float range) {
         this.range = range;
     }
-/*
 
-    public void upgradeRange(){
-        if(!upgradeRange) {
-            if(Player.getMoney() >= 100) {
-                upgradeRange = true;
-                setRange(getRange() * 2);
-                Player.addMoney(-100);
-            }
+/*    public void upgradeRange(){
+        if(!upgradeRange && Player.getMoney() >= 100) {
+            upgradeRange = true;
+            setRange(getRange() * 2);
+            Player.spendMoney(100);
         }
     }
     public void upgradeSpeed(){
-        if(!upgradeSpeed) {
-            if (Player.getMoney() >= 200) {
-                upgradeSpeed = true;
-                setDelay(getDelay() / 2);
-                Player.addMoney(-200);
-            }
+        if(!upgradeSpeed && Player.getMoney() >= 200) {
+            upgradeSpeed = true;
+            setDelay(getDelay() / 2);
+            Player.spendMoney(200);
         }
     }
     public void upgradeDamage(){
-        if(!upgradeDamage) {
-            if (Player.getMoney() >= 300) {
-                upgradeDamage = true;
-                projectile.upgradeDamage();
-                Player.addMoney(-300);
-            }
+        if(!upgradeDamage && Player.getMoney() >= 300) {
+            upgradeDamage = true;
+            projectile.upgradeDamage();
+            Player.spendMoney(300);
         }
     }
-*/
+
+    */
 
     /*
     ataca al minion mediante el método damage que tiene éste. Se le pasa un int que es la cantidad de puntos que
@@ -151,7 +148,7 @@ public abstract class Tower extends Entity {
     }
 
     public void attack(List<Minion> targets){
-        for(Minion m : targets){
+        for(Minion m: targets){
             m.damage(projectile);
         }
     }
@@ -163,5 +160,6 @@ public abstract class Tower extends Entity {
     public void setDelay(float delay) {
         this.delay = delay;
     }
+
     public int getPrice(){return price;}
 }

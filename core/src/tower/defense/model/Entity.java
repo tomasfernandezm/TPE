@@ -28,7 +28,7 @@ public abstract class Entity {
     /*
      devuelve el game al que pertenece
       */
-    protected Game getGame() {
+    public Game getGame() {
         return this.game;
     }
 

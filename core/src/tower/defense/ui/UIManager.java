@@ -46,6 +46,7 @@ public class UIManager implements GameListener {
     private Texture ElectricMinionTexture;
     private Texture background;
     private Texture background2;
+    private Texture projectileTexture;
 
     private Sound minionKilled = Gdx.audio.newSound(Gdx.files.internal("core/assets/facebook_ringtone_pop.mp3"));
     /*
@@ -85,9 +86,6 @@ public class UIManager implements GameListener {
         RedMinionTexture = new Texture("core/assets/RedMinion.png");
         MultipleMinionTexture = new Texture("core/assets/MultipleMinion.png");
         ElectricMinionTexture = new Texture("core/assets/ElectricMinion.png");
-
-        //rectan = new Texture("assets/rect.png");
-
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, boundaries.x, boundaries.y);

@@ -9,6 +9,8 @@ import tower.defense.model.Minion.Minion;
 import tower.defense.model.Minion.MultipleMinion;
 import tower.defense.model.Minion.RedMinion;
 import tower.defense.model.Tower.AreaTower;
+import tower.defense.model.Tower.Proyectile.Bomb;
+import tower.defense.model.Tower.Proyectile.Projectile;
 import tower.defense.model.Tower.SimpleTower;
 import tower.defense.model.Tower.Tower;
 
@@ -24,7 +26,6 @@ import java.util.List;
 public class Game {
     private Collection<Tower> towers = new HashSet<Tower>();
     private Collection<Minion> minions = new HashSet<Minion>();
-    private Collection<Minion> minionsToRemove = new HashSet<Minion>();
 
     private List<GameListener> listeners = new LinkedList<GameListener>();
 
@@ -39,12 +40,16 @@ public class Game {
 
     public void init() {
 //        addTower(new SimpleTower(new Vector2(200, 200), this));
-        addMinion(new RedMinion(new Vector2(25, 75), this, path));
-        addMinion(new RedMinion(new Vector2(10, 75), this, path));
-        addMinion(new RedMinion(new Vector2(0, 75), this, path));
+        addMinion(new MultipleMinion(new Vector2(25, 75), this, path));
+        addMinion(new MultipleMinion(new Vector2(10, 75), this, path));
+        addMinion(new MultipleMinion(new Vector2(-25, 75), this, path));
+        addMinion(new MultipleMinion(new Vector2(-35, 75), this, path));
+        addMinion(new MultipleMinion(new Vector2(-45, 75), this, path));
+        addMinion(new MultipleMinion(new Vector2(0, 75), this, path));
     }
 
     public void update(Graphics graphics) {
+        Collection<Minion> minionsToRemove = new HashSet<Minion>();
         for(Tower t: towers) {
             t.update(graphics.getDeltaTime());
         }
@@ -73,11 +78,33 @@ public class Game {
         return boundaries;
     }
 
+/*    public List<Minion> getMinionsInBlastRange(Projectile projectile) {
+        List<Minion> ret = new LinkedList<Minion>();
+
+        for(Minion m:minions) {
+            if (tower.getDistance(m) < tower.getRange()) {
+                ret.add(m);
+            }
+        }
+        return ret;
+    }*/
+
     public List<Minion> getMinionsInRange(Tower tower) {
         List<Minion> ret = new LinkedList<Minion>();
 
         for(Minion m:minions) {
             if (tower.getDistance(m) < tower.getRange()) {
+                ret.add(m);
+            }
+        }
+        return ret;
+    }
+
+    public List<Minion> getMinionsInRange(Bomb bomb) {
+        List<Minion> ret = new LinkedList<Minion>();
+
+        for(Minion m:minions) {
+            if (bomb.getDistance(m) < bomb.getRange()) {
                 ret.add(m);
             }
         }
