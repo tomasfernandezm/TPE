@@ -62,54 +62,52 @@ public class Path {
     private long time;
     private boolean inX;
 
-    public void rotate(Minion minion) {
-        Vector2 vect = new Vector2();
-        minion.getPosition().getCenter(vect);
-        vect.add(minion.getVelocity());
+    public int rotate(Minion minion) {
         if(TimeUtils.nanoTime() - time > 2000000000) {
             for (Rectangle r : rectangleList) {
 //            if(minion.getPosition().overlaps(r)){
                 if (minion.isInX()) {
                     //abajo
-                    if (r.contains(new Vector2(minion.getPositionX() + 46, minion.getPositionY())) || r.contains(new Vector2(minion.getPositionX() - 46, minion.getPositionY()))) {
+                    if ((r.contains(new Vector2(minion.getPositionX() + 46, minion.getPositionY())) || r.contains(new Vector2(minion.getPositionX() - 46, minion.getPositionY())) && (minion.getVelocity().angle() > -0.1 && minion.getVelocity().angle() < 0.1))) {
                         if (r.contains(new Vector2(minion.getPositionX(), minion.getPositionY() + 70))) {
-                            minion.setVelocity(minion.getVelocity().setAngle(270));
+//                            minion.setVelocity(minion.getVelocity().setAngle(270));
                             time = TimeUtils.nanoTime();
                             minion.changeInX();
                             System.out.println(1);
-                            return;
+                            return 1;
 
                         } else {
                             //arriba
-                            minion.setVelocity(minion.getVelocity().setAngle(90));
+//                            minion.setVelocity(minion.getVelocity().setAngle(90));
                             time = TimeUtils.nanoTime();
                             minion.changeInX();
                             System.out.println(2);
-                            return;
+                            return 2;
                         }
                     }
                 } else {
                     if (r.contains(new Vector2(minion.getPositionX(), minion.getPositionY() + 46)) || r.contains(new Vector2(minion.getPositionX(), minion.getPositionY() - 46))) {
                         //izquierda
                         if (r.contains(new Vector2(minion.getPositionX() + 70, minion.getPositionY()))) {
-                            minion.setVelocity(minion.getVelocity().setAngle(180));
+//                            minion.setVelocity(minion.getVelocity().setAngle(180));
                             time = TimeUtils.nanoTime();
                             minion.changeInX();
                             System.out.println(3);
-                            return;
+                            return 3;
                             //derecha
                         } else {
-                            minion.setVelocity(minion.getVelocity().setAngle(0));
+//                            minion.setVelocity(minion.getVelocity().setAngle(0));
                             time = TimeUtils.nanoTime();
                             minion.changeInX();
                             System.out.println(4);
-                            return;
+                            return 4;
                         }
                     }
                 }
 
             }
         }
-        minion.getPosition().setCenter(vect);
+//        minion.getPosition().setCenter(vect);
+        return 0;
     }
 }

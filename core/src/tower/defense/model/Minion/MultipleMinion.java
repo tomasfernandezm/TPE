@@ -14,8 +14,7 @@ public class MultipleMinion extends Minion{
 
     @Override
     public void die() {
-        Minion minion = new RedMinion(getPosition().getCenter(new Vector2(0,400)), this.getGame(), this.getPath(),this.getVelocity());
         super.die();
-        getGame().addMinion(minion);
+        getGame().addMinion(new RedMinion(getPosition().getCenter(new Vector2(0,400)), this.getGame(), this.getPath(),this.getVelocity()));
     }
 }
