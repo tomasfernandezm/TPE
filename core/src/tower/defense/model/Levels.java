@@ -1,17 +1,69 @@
 package tower.defense.model;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+
+import com.badlogic.gdx.utils.*;
+
+import java.util.*;
+import java.util.Timer;
+import java.util.function.Consumer;
 
 /**
  * Created by tomifor on 17/11/15.
  */
-public class Levels {
-   // List<Level> listLevel = new List<Level>();
+public class Levels implements Iterable<Level>{
 
-    //public Levels(){
+    private List<Level> levels;
+    private Game game;
+    private int levelcount;
 
-    //}
+    public Levels(Game game){
+        levels = new ArrayList<Level>();
+        this.game = game;
+        levelcount = 0;
+
+    }
+
+    public void addLevel(int redminion, int multipleminion, int electricminion){
+        levels.add(new Level(game, redminion, multipleminion, electricminion));
+    }
+
+    public void go(){
+        if(levelcount < size()) {
+            levels.get(levelcount).go(0);
+            levelcount++;
+        }
+    }
+
+    public int size(){
+        return levels.size();
+    }
+
+    public Iterator<Level> iterator(){
+        return new LevelIterator();
+    }
+
+    public class LevelIterator implements Iterator<Level>{
+
+        int index = 0;
+        @Override
+        public boolean hasNext() {
+            return index < size();
+        }
+
+        @Override
+        public Level next() {
+            if(!hasNext()){
+                throw new UnsupportedOperationException();
+            }else{
+                index++;
+                return levels.get(index);
+            }
+        }
+
+        @Override
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
+    }
 }
+

@@ -28,6 +28,7 @@ public class TowerInputProcessor extends MyInputProcessor implements com.badlogi
 
     @Override
     public boolean keyDown(int keycode) {
+        int levelcount = 0;
 
         if (keycode == 45) {
             game.addTower(new SimpleTower(new Vector2(Gdx.input.getX(), 500-Gdx.input.getY()), game));
@@ -48,6 +49,9 @@ public class TowerInputProcessor extends MyInputProcessor implements com.badlogi
         if (keycode == 48){
             game.addTower(new TeslaTower(new Vector2(Gdx.input.getX(), 500-Gdx.input.getY()), game));
             System.out.println("Tesla Tower added");
+        }
+        if (keycode == 66){
+            game.getLevels().go();
         }
 
         return true;

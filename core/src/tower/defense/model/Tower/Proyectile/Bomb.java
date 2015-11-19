@@ -14,7 +14,7 @@ import java.util.List;
 public class Bomb extends Projectile {
 
     private double range;
-    private List<Minion> inRange = getTower().getGame().getMinionsInRange(this);
+    private List<Minion> inRange = getTower().getGame().getMinionsInRange(getTower());
 
     public Bomb(Tower tower){
         super(10,tower);
