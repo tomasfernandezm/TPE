@@ -6,7 +6,6 @@ import com.badlogic.gdx.utils.TimeUtils;
 import tower.defense.model.Entity;
 import tower.defense.model.Game;
 import tower.defense.model.Path;
-import tower.defense.model.Tower.Proyectile.Bomb;
 import tower.defense.model.Tower.Proyectile.ElectricRay;
 import tower.defense.model.Tower.Proyectile.FreezeRay;
 import tower.defense.model.Tower.Proyectile.Projectile;
@@ -92,16 +91,14 @@ public abstract class Minion extends Entity {
                 slow();
             }
         }else {
-            if(projectile instanceof Bomb) {
-                if (electric) {
-                    if (projectile instanceof ElectricRay) {
-                        hitpoints -= projectile.getDamage() * 2;
-                    } else {
-                        hitpoints -= projectile.getDamage() / 4;
-                    }
+            if (electric) {
+                if (projectile instanceof ElectricRay) {
+                    hitpoints -= projectile.getDamage() * 2;
                 } else {
-                    hitpoints -= projectile.getDamage();
+                    hitpoints -= projectile.getDamage() / 4;
                 }
+            } else {
+                hitpoints -= projectile.getDamage();
             }
             if (hitpoints <= 0) {
                 die();
