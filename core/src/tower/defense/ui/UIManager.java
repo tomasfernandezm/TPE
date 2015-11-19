@@ -19,6 +19,7 @@ import tower.defense.model.Path;
 import tower.defense.model.Player;
 import tower.defense.model.Tower.*;
 
+import java.io.ObjectInputStream;
 import java.util.HashMap;
 
 /**
@@ -174,6 +175,14 @@ public class UIManager implements GameListener {
     public ShapeRenderer getShapeRenderer() {
         return shapeRenderer;
     }
+
+    public Player GetPlayer(){return player;}
+
+
+
+
+
+
 
 }
 
