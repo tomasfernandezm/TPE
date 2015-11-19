@@ -9,11 +9,12 @@ import tower.defense.model.Path;
  */
 public class ElectricMinion extends Minion{
     public ElectricMinion(Vector2 center, Game game, Path path) {
-        super(center, game, path,400);
+        super(center, game, path,1000);
         beElectric();
     }
 
-    public int getType(){
+    @Override
+    public int getType() {
         return 3;
     }
 }

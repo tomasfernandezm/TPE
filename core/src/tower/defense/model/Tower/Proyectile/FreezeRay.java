@@ -12,13 +12,14 @@ import tower.defense.model.Tower.Tower;
 public class FreezeRay extends Projectile{
     private float slowTimer;
 
-    public FreezeRay(Minion target, Tower tower, float damageFactor){
-            super(0.5f,target, tower, damageFactor);
-            slowTimer = 1f;
+    public FreezeRay(Minion target, Tower tower,float damageFactor){
+        super(0.5f,target,tower,damageFactor);
+        slowTimer = 1f;
 
     }
 
-    public void damage(){
+    @Override
+    public void damage() {
         getTarget().slow(getDamage(),getSlowtimer());
     }
 

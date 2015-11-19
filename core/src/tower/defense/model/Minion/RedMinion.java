@@ -9,15 +9,15 @@ import tower.defense.model.Path;
 public class RedMinion extends Minion{
 
     public RedMinion(Vector2 center, Game game,Path path) {
-        super(center, game, path, 1);
+        super(center, game, path, 100);
     }
 
     public RedMinion(Vector2 center, Game game, Path path, Vector2 velocity) {
         super(center, game, path, 1, velocity);
     }
 
-    public int getType(){
+    @Override
+    public int getType() {
         return 1;
     }
-
 }

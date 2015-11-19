@@ -6,6 +6,8 @@ import tower.defense.model.Minion.Minion;
 import tower.defense.model.Tower.Proyectile.FreezeRay;
 import tower.defense.model.Tower.Proyectile.Projectile;
 
+import java.util.List;
+
 
 /**
  * Created by Tomi on 08/11/2015.
@@ -20,25 +22,25 @@ public class FreezeTower extends Tower {
         super(center, game, 100, 3,400);
     }
 
-    public void update(float timedelta){
+    @Override
+    public void update(float timedelta) {
         timer += timedelta;
         inRange = getGame().getMinionsInRange(this);
-        if(timer > delay){
-            if(!inRange.isEmpty()){
+        if (timer > delay) {
+            if (!inRange.isEmpty()) {
                 for(Minion target: inRange){
                     if(!target.isSlow()){
                         shoot(target);
                         break;
                     }
                 }
-            }
-            timer = 0;
         }
+        timer = 0;
+    }
     }
 
-    public void shoot(Minion target){
-        Projectile projectile = new FreezeRay(target, this, damageFactor);
+    public void shoot(Minion target) {
+        Projectile projectile =new FreezeRay(target,this,damageFactor);
         getGame().addProjectile(projectile);
     }
-
 }

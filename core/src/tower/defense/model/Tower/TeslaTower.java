@@ -21,20 +21,21 @@ public class TeslaTower extends Tower {
         super(center, game, 100, 1,800);
     }
 
-    public void update(float timedelta){
+
+    @Override
+    public void update(float timedelta) {
         timer += timedelta;
         inRange = getGame().getMinionsInRange(this);
-        if(timer > delay){
-            if(!inRange.isEmpty()){
+        if (timer > delay) {
+            if (!inRange.isEmpty()) {
                 shoot(inRange.get(0));
             }
             timer = 0;
         }
     }
 
-    public void shoot(Minion target){
-        Projectile projectile = new FreezeRay(target, this, damageFactor);
+    public void shoot(Minion target) {
+        Projectile projectile = new FreezeRay(target,this,damageFactor);
         getGame().addProjectile(projectile);
     }
-
 }

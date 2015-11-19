@@ -17,11 +17,13 @@ torre que ataca a varios enemigos a la vez, falta terminar, usa proyectil simple
  */
 public class AreaTower extends Tower {
 
-    public AreaTower(Vector2 center, Game game) {
+    public AreaTower(Vector2 center, Game game){
         super(center, game, 75, 3,300);
+
     }
 
-    public void update(float timedelta){
+    @Override
+    public void update(float timedelta) {
         timer += timedelta;
         inRange = getGame().getMinionsInRange(this);
 
@@ -32,12 +34,11 @@ public class AreaTower extends Tower {
             timer = 0;
         }
     }
-
-    public void shoot(List<Minion> targets){
-        for(Minion target: targets){
-            Projectile projectile = new SimpleProjectile(target, this, damageFactor);
+    public void shoot(List<Minion> targets) {
+        for (Minion target : targets) {
+            Projectile projectile = new SimpleProjectile(target, this,damageFactor);
             getGame().addProjectile(projectile);
         }
-    }
 
+    }
 }

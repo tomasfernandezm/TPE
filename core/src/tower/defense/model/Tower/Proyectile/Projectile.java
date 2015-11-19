@@ -14,10 +14,19 @@ public abstract class Projectile {
 
     private float damage;
     private Minion target;
-    private  Tower tower;
+    private Tower tower;
     private long time = 1;
     private boolean hit = false;
     protected float damageFactor;
+
+    public void update(float timedelta){
+
+        time -= timedelta;
+        if(time <= 0){
+            hit = true;
+            System.out.println(1);
+        }
+    }
 
     public Projectile(float damage, Minion target, Tower tower, float damageFactor) {
         this.damage = damage*damageFactor;
@@ -26,15 +35,6 @@ public abstract class Projectile {
         this.damageFactor = damageFactor;
         damage();
     }
-
-    public void update(float timedelta){
-        time -= timedelta;
-        if(time<= 0){
-            hit = true;
-            System.out.println(1);
-        }
-    }
-
 
     public float getDamage(){
         return damage;
@@ -50,11 +50,11 @@ public abstract class Projectile {
         return tower;
     }
 
-    public Minion getTarget(){
+    public Minion getTarget() {
         return target;
     }
 
-    public abstract  void damage();
+    public abstract void damage();
 
     public boolean hit(){
         return hit;

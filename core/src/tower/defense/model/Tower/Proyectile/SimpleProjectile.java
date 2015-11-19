@@ -11,10 +11,11 @@ import tower.defense.model.Tower.Tower;
 public class SimpleProjectile extends Projectile{
 
     public SimpleProjectile(Minion target, Tower tower, float damageFactor){
-        super(75, target, tower, damageFactor);
+        super(75,target,tower,damageFactor);
     }
 
-    public void damage(){
-        getTarget().recieveDamage(getDamage());
+    @Override
+    public void damage() {
+        getTarget().receiveDamage(getDamage());
     }
 }

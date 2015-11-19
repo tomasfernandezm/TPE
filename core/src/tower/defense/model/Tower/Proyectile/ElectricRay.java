@@ -10,15 +10,14 @@ import tower.defense.model.Tower.Tower;
  */
 public class ElectricRay extends Projectile {
 
-    public ElectricRay(Minion target, Tower tower, float damageFactor) {
-        super(100, target, tower, damageFactor);
-    }
+    public ElectricRay(Minion target, Tower tower,float damageFactor){super(100,target,tower,damageFactor); }
 
+    @Override
     public void damage() {
-        if (getTarget().isElectric()) {
-            getTarget().recieveDamage(getDamage() * 5);
-        } else {
-            getTarget().recieveDamage(getDamage() / 2);
+        if(getTarget().isElectric()){
+            getTarget().receiveDamage(getDamage()*5);
+        }else{
+            getTarget().receiveDamage(getDamage()/2);
         }
     }
 }

@@ -27,6 +27,7 @@ public abstract class Tower extends Entity {
     protected List<Minion> inRange = getGame().getMinionsInRange(this);
 
 
+
     public Tower(Vector2 center, Game game, float range, float delay, int price) {
         super(game);
         getPosition().setHeight(HEIGHT);
@@ -40,7 +41,6 @@ public abstract class Tower extends Entity {
     public abstract void update(float timedelta);
 
     public boolean isAttacking() {
-//        return target != null && !target.isKilled();
         return !inRange.isEmpty();
     }
 
@@ -77,11 +77,6 @@ public abstract class Tower extends Entity {
         }
     }
 
-
-    /*
-    ataca al minion mediante el método damage que tiene éste. Se le pasa un int que es la cantidad de puntos que
-    le saca.
-     */
     public float getDelay() {
         return delay;
     }

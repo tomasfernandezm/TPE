@@ -34,7 +34,6 @@ public class Path {
                 }
             }
         }
-        addRectangle(new Rectangle(500, 0, 100, 400));
     }
 
     public boolean contains(Entity entity) {

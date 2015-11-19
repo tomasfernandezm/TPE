@@ -17,28 +17,27 @@ public class Bomb extends Projectile {
     private List<Minion> inRange;
 
     public Bomb(Minion target, Tower tower, float damageFactor){
-        super(100, target,tower, damageFactor);
+        super(100,target,tower, damageFactor);
     }
 
-    public void damage(){
+    @Override
+    public void damage() {
         inRange = getTarget().getGame().getMinionInRange(this);
         for(Minion target: inRange){
             System.out.println(inRange);
-            Projectile projectile = new SimpleProjectile(target, getTower(), damageFactor);
+            Projectile projectile = new SimpleProjectile(target, getTower(),damageFactor);
             getTower().getGame().addProjectileToAdd(projectile);
         }
-        getTarget().recieveDamage(getDamage());
+        getTarget().receiveDamage(getDamage());
     }
 
     public double getRange(){
         return range;
     }
 
-    public List<Minion> getInRange(){
-        return inRange;
-    }
+    public List<Minion> getInRange() {return inRange;}
 
-    public float getDistance(Entity entity){
+    public float getDistance(Entity entity) {
         Vector2 target = getTarget().getPosition().getCenter(new Vector2());
         Vector2 other = entity.getPosition().getCenter(new Vector2());
         return target.dst(other);
