@@ -6,9 +6,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/classes/main/tower/defense/model/Minion/MultipleMinion.class" afterPath="$PROJECT_DIR$/core/build/classes/main/tower/defense/model/Minion/MultipleMinion.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/classes/main/tower/defense/model/Player.class" afterPath="$PROJECT_DIR$/core/build/classes/main/tower/defense/model/Player.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TPE.iws" afterPath="$PROJECT_DIR$/TPE.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/tower/defense/model/Minion/Minion.java" afterPath="$PROJECT_DIR$/core/src/tower/defense/model/Minion/Minion.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/tower/defense/model/Tower/Proyectile/ElectricRay.java" afterPath="$PROJECT_DIR$/core/src/tower/defense/model/Tower/Proyectile/ElectricRay.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/tower/defense/model/Tower/TeslaTower.java" afterPath="$PROJECT_DIR$/core/src/tower/defense/model/Tower/TeslaTower.java" />
     </list>
     <ignored path="TPE.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1626,7 +1623,7 @@
       <workItem from="1447952419753" duration="274000" />
       <workItem from="1447952761828" duration="8275000" />
       <workItem from="1447962589002" duration="10088000" />
-      <workItem from="1447976876701" duration="5910000" />
+      <workItem from="1447976876701" duration="5920000" />
     </task>
     <task id="LOCAL-00001" summary="JOJOJO">
       <created>1447818909438</created>
@@ -1694,11 +1691,17 @@
       <option name="project" value="LOCAL" />
       <updated>1447984228380</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Actualizado">
+      <created>1447986001361</created>
+      <option name="number" value="00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1447986001361</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82400000" />
+    <option name="totallyTimeSpent" value="82410000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1386" height="788" extended-state="0" />
