@@ -2,10 +2,8 @@ package tower.defense.model;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Timer;
-import tower.defense.model.Minion.ElectricMinion;
-import tower.defense.model.Minion.Minion;
-import tower.defense.model.Minion.MultipleMinion;
-import tower.defense.model.Minion.RedMinion;
+import tower.defense.model.Minion.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,13 +16,14 @@ public class Level {
     private Game game;
     private List<Minion> minionList;
 
-    public Level(Game game, int RedMinion, int MultipleMinion, int ElectricMinion){
+    public Level(Game game, int RedMinion, int MultipleMinion, int ElectricMinion, int BossMinion){
         this.game = game;
         done = false;
         minionList = new ArrayList<Minion>();
         addRedMinion(RedMinion);
         addMultipleMinion(MultipleMinion);
         addElectricMinion(ElectricMinion);
+        addBossMinion(BossMinion);
     }
 
     public void addRedMinion(int amount){
@@ -42,6 +41,12 @@ public class Level {
     public void addElectricMinion(int amount){
         for(int i = 0;i<amount;i++){
             minionList.add(new ElectricMinion(new Vector2(10,75), game,game.getPath()));
+        }
+    }
+
+    public void addBossMinion(int amount) {
+        for (int i = 0; i < amount; i++) {
+            minionList.add(new BossMinion(new Vector2(10, 75), game, game.getPath()));
         }
     }
 

@@ -47,11 +47,11 @@ public class Game {
 
     public Game(Vector2 boundaries) {
         this.boundaries = boundaries;
-        levels.addLevel(30, 0, 0);
-        levels.addLevel(30, 30, 0);
-        levels.addLevel(30, 30, 30);
-        levels.addLevel(50, 50, 50);
-        levels.addLevel(60, 60, 60);
+        levels.addLevel(30, 0, 0, 0);
+        levels.addLevel(30, 30, 0, 0);
+        levels.addLevel(30, 30, 30, 0);
+        levels.addLevel(50, 50, 50, 0);
+        levels.addLevel(60, 60, 60, 1);
 
     }
     public void init() {

@@ -12,6 +12,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import tower.defense.model.Entity;
 import tower.defense.model.GameListener;
+import tower.defense.model.Minion.ElectricMinion;
 import tower.defense.model.Minion.Minion;
 import tower.defense.model.Minion.MultipleMinion;
 import tower.defense.model.Minion.RedMinion;
@@ -47,6 +48,7 @@ public class UIManager implements GameListener {
     private Texture RedMinionTexture;
     private Texture MultipleMinionTexture;
     private Texture ElectricMinionTexture;
+    private Texture BossMinionTexture;
     private Texture background;
     private Texture background2;
     private Texture projectileTexture;
@@ -90,6 +92,7 @@ public class UIManager implements GameListener {
         RedMinionTexture = new Texture("core/assets/RedMinion.png");
         MultipleMinionTexture = new Texture("core/assets/MultipleMinion.png");
         ElectricMinionTexture = new Texture("core/assets/ElectricMinion.png");
+        BossMinionTexture = new Texture("core/assets/nizzo.jpeg");
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, boundaries.x, boundaries.y);
@@ -177,8 +180,10 @@ public class UIManager implements GameListener {
             entities.put(minion, new UIEntity<Minion>(RedMinionTexture, minion));
         }else if(minion instanceof MultipleMinion){
             entities.put(minion, new UIEntity<Minion>(MultipleMinionTexture, minion));
-        }else{
+        }else if(minion instanceof ElectricMinion){
             entities.put(minion, new UIEntity<Minion>(ElectricMinionTexture, minion));
+        }else{
+            entities.put(minion, new UIEntity<Minion>(BossMinionTexture, minion));
         }
     }
 

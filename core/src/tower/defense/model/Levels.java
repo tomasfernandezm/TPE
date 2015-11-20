@@ -23,8 +23,8 @@ public class Levels implements Iterable<Level>{
 
     }
 
-    public void addLevel(int redminion, int multipleminion, int electricminion){
-        levels.add(new Level(game, redminion, multipleminion, electricminion));
+    public void addLevel(int redminion, int multipleminion, int electricminion, int bossminion){
+        levels.add(new Level(game, redminion, multipleminion, electricminion, bossminion));
     }
 
     public void go(){
