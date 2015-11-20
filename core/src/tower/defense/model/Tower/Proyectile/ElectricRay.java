@@ -16,8 +16,10 @@ public class ElectricRay extends Projectile {
     public void damage() {
         if(getTarget().isElectric()){
             getTarget().receiveDamage(getDamage()*5);
+            System.out.println(getDamage()*5);
         }else{
             getTarget().receiveDamage(getDamage()/2);
+            System.out.println(getDamage()/2);
         }
     }
 }

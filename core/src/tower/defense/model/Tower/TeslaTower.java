@@ -35,7 +35,7 @@ public class TeslaTower extends Tower {
     }
 
     public void shoot(Minion target) {
-        Projectile projectile = new FreezeRay(target,this,damageFactor);
+        Projectile projectile = new ElectricRay(target,this,damageFactor);
         getGame().addProjectile(projectile);
     }
 }

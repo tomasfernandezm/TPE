@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05f1f453-fabc-4095-9c1f-94ad40b48f68" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/classes/main/tower/defense/model/Game.class" afterPath="$PROJECT_DIR$/core/build/classes/main/tower/defense/model/Game.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/classes/main/tower/defense/model/Path.class" afterPath="$PROJECT_DIR$/core/build/classes/main/tower/defense/model/Path.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/classes/main/tower/defense/model/Tower/Proyectile/Projectile.class" afterPath="$PROJECT_DIR$/core/build/classes/main/tower/defense/model/Tower/Proyectile/Projectile.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/classes/main/tower/defense/model/Minion/Minion.class" afterPath="$PROJECT_DIR$/core/build/classes/main/tower/defense/model/Minion/Minion.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/classes/main/tower/defense/model/Minion/MultipleMinion.class" afterPath="$PROJECT_DIR$/core/build/classes/main/tower/defense/model/Minion/MultipleMinion.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/classes/main/tower/defense/model/Player.class" afterPath="$PROJECT_DIR$/core/build/classes/main/tower/defense/model/Player.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TPE.iws" afterPath="$PROJECT_DIR$/TPE.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/tower/defense/model/Game.java" afterPath="$PROJECT_DIR$/core/src/tower/defense/model/Game.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/tower/defense/model/Minion/Minion.java" afterPath="$PROJECT_DIR$/core/src/tower/defense/model/Minion/Minion.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/tower/defense/model/Minion/MultipleMinion.java" afterPath="$PROJECT_DIR$/core/src/tower/defense/model/Minion/MultipleMinion.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/tower/defense/model/Tower/Proyectile/Projectile.java" afterPath="$PROJECT_DIR$/core/src/tower/defense/model/Tower/Proyectile/Projectile.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/tower/defense/model/Tower/Proyectile/ElectricRay.java" afterPath="$PROJECT_DIR$/core/src/tower/defense/model/Tower/Proyectile/ElectricRay.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/tower/defense/model/Tower/TeslaTower.java" afterPath="$PROJECT_DIR$/core/src/tower/defense/model/Tower/TeslaTower.java" />
     </list>
     <ignored path="TPE.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -49,11 +48,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Game.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/tower/defense/model/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.17510854">
-              <caret line="132" column="20" selection-start-line="132" selection-start-column="20" selection-end-line="132" selection-end-column="20" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="36" column="7" selection-start-line="36" selection-start-column="7" selection-end-line="36" selection-end-column="7" />
               <folding>
                 <element signature="e#5023#5024#0" expanded="true" />
                 <element signature="e#5052#5053#0" expanded="true" />
@@ -62,28 +61,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MultipleMinion.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/tower/defense/model/Minion/MultipleMinion.java">
+      <file leaf-file-name="TeslaTower.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/tower/defense/model/Tower/TeslaTower.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
-              <folding>
-                <element signature="e#290#291#0" expanded="true" />
-                <element signature="e#335#336#0" expanded="true" />
-              </folding>
+              <caret line="37" column="48" selection-start-line="37" selection-start-column="48" selection-end-line="37" selection-end-column="48" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Minion.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/tower/defense/model/Minion/Minion.java">
+      <file leaf-file-name="ElectricRay.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/tower/defense/model/Tower/Proyectile/ElectricRay.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="48" column="21" selection-start-line="48" selection-start-column="21" selection-end-line="48" selection-end-column="21" />
-              <folding>
-                <element signature="e#2501#2502#0" expanded="true" />
-                <element signature="e#2530#2531#0" expanded="true" />
-              </folding>
+              <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Player.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/core/src/tower/defense/model/Player.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.093406595">
+              <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -843,7 +846,6 @@
         <option value="$PROJECT_DIR$/core/src/tower/defense/model/Entity.java" />
         <option value="$PROJECT_DIR$/core/src/tower/defense/ui/UITowerEntity.java" />
         <option value="$PROJECT_DIR$/core/src/tower/defense/controller/TowerInputProcessor.java" />
-        <option value="$PROJECT_DIR$/core/src/tower/defense/model/Player.java" />
         <option value="$PROJECT_DIR$/core/src/tower/defense/model/Levels.java" />
         <option value="$PROJECT_DIR$/core/src/tower/defense/model/SaveScore.java" />
         <option value="$PROJECT_DIR$/core/src/tower/defense/model/Minion/RedMinion.java" />
@@ -852,18 +854,19 @@
         <option value="$PROJECT_DIR$/core/src/tower/defense/model/Tower/SimpleTower.java" />
         <option value="$PROJECT_DIR$/core/src/tower/defense/model/Tower/BomberTower.java" />
         <option value="$PROJECT_DIR$/core/src/tower/defense/model/Tower/FreezeTower.java" />
-        <option value="$PROJECT_DIR$/core/src/tower/defense/model/Tower/TeslaTower.java" />
         <option value="$PROJECT_DIR$/core/src/tower/defense/model/Tower/Proyectile/SimpleProjectile.java" />
-        <option value="$PROJECT_DIR$/core/src/tower/defense/model/Tower/Proyectile/ElectricRay.java" />
         <option value="$PROJECT_DIR$/core/src/tower/defense/model/Tower/Proyectile/FreezeRay.java" />
         <option value="$PROJECT_DIR$/core/src/tower/defense/model/Tower/Proyectile/Bomb.java" />
         <option value="$PROJECT_DIR$/core/src/tower/defense/model/Path.java" />
         <option value="$PROJECT_DIR$/core/src/tower/defense/model/Tower/AreaTower.java" />
         <option value="$PROJECT_DIR$/core/src/tower/defense/ui/UIManager.java" />
         <option value="$PROJECT_DIR$/core/src/tower/defense/model/Tower/Proyectile/Projectile.java" />
-        <option value="$PROJECT_DIR$/core/src/tower/defense/model/Minion/Minion.java" />
         <option value="$PROJECT_DIR$/core/src/tower/defense/model/Minion/MultipleMinion.java" />
         <option value="$PROJECT_DIR$/core/src/tower/defense/model/Game.java" />
+        <option value="$PROJECT_DIR$/core/src/tower/defense/model/Minion/Minion.java" />
+        <option value="$PROJECT_DIR$/core/src/tower/defense/model/Tower/Proyectile/ElectricRay.java" />
+        <option value="$PROJECT_DIR$/core/src/tower/defense/model/Tower/TeslaTower.java" />
+        <option value="$PROJECT_DIR$/core/src/tower/defense/model/Player.java" />
       </list>
     </option>
   </component>
@@ -1623,7 +1626,7 @@
       <workItem from="1447952419753" duration="274000" />
       <workItem from="1447952761828" duration="8275000" />
       <workItem from="1447962589002" duration="10088000" />
-      <workItem from="1447976876701" duration="4547000" />
+      <workItem from="1447976876701" duration="5910000" />
     </task>
     <task id="LOCAL-00001" summary="JOJOJO">
       <created>1447818909438</created>
@@ -1685,11 +1688,17 @@
       <option name="project" value="LOCAL" />
       <updated>1447977284039</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Actualizado">
+      <created>1447984228380</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1447984228380</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81037000" />
+    <option name="totallyTimeSpent" value="82400000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1386" height="788" extended-state="0" />
@@ -1702,7 +1711,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25980392" sideWeight="0.5030257" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3267974" sideWeight="0.4969743" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4589708" sideWeight="0.4969743" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20166898" sideWeight="0.4969743" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17027417" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1779,8 +1788,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="e#2472#2473#0" expanded="true" />
             <element signature="e#2501#2502#0" expanded="true" />
-            <element signature="e#2530#2531#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1798,8 +1807,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="e#2472#2473#0" expanded="true" />
             <element signature="e#2501#2502#0" expanded="true" />
-            <element signature="e#2530#2531#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1845,8 +1854,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="173" column="16" selection-start-line="173" selection-start-column="16" selection-end-line="173" selection-end-column="16" />
           <folding>
+            <element signature="e#2472#2473#0" expanded="true" />
             <element signature="e#2501#2502#0" expanded="true" />
-            <element signature="e#2530#2531#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2018,19 +2027,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/tower/defense/model/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="59" column="29" selection-start-line="59" selection-start-column="29" selection-end-line="59" selection-end-column="29" />
-          <folding>
-            <element signature="e#654#655#0" expanded="true" />
-            <element signature="e#677#678#0" expanded="true" />
-            <element signature="e#1314#1315#0" expanded="true" />
-            <element signature="e#1341#1342#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/tower/defense/model/Tower/Tower.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2044,16 +2040,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="36" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/tower/defense/model/Tower/TeslaTower.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2073,28 +2059,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/tower/defense/model/Tower/Proyectile/ElectricRay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/tower/defense/model/Tower/Proyectile/Bomb.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="28" column="64" selection-start-line="28" selection-start-column="64" selection-end-line="28" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/tower/defense/model/Tower/FreezeTower.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15145986">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -2201,18 +2169,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/tower/defense/model/Minion/Minion.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="48" column="21" selection-start-line="48" selection-start-column="21" selection-end-line="48" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.2032967">
+          <caret line="29" column="38" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
           <folding>
+            <element signature="e#2472#2473#0" expanded="true" />
             <element signature="e#2501#2502#0" expanded="true" />
-            <element signature="e#2530#2531#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/tower/defense/model/Tower/FreezeTower.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.52098405">
+          <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/tower/defense/model/Minion/MultipleMinion.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.08683068">
           <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
           <folding>
             <element signature="e#290#291#0" expanded="true" />
@@ -2223,12 +2199,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/tower/defense/model/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17510854">
-          <caret line="132" column="20" selection-start-line="132" selection-start-column="20" selection-end-line="132" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="7" selection-start-line="36" selection-start-column="7" selection-end-line="36" selection-end-column="7" />
           <folding>
             <element signature="e#5023#5024#0" expanded="true" />
             <element signature="e#5052#5053#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/tower/defense/model/Tower/Proyectile/ElectricRay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/tower/defense/model/Tower/TeslaTower.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="48" selection-start-line="37" selection-start-column="48" selection-end-line="37" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/tower/defense/model/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.093406595">
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
