@@ -92,7 +92,7 @@ public class UIManager implements GameListener {
         RedMinionTexture = new Texture("core/assets/RedMinion.png");
         MultipleMinionTexture = new Texture("core/assets/MultipleMinion.png");
         ElectricMinionTexture = new Texture("core/assets/ElectricMinion.png");
-        BossMinionTexture = new Texture("core/assets/nizzo.jpeg");
+        BossMinionTexture = new Texture("core/assets/black.png");
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, boundaries.x, boundaries.y);
