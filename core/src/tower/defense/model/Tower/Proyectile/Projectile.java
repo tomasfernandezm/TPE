@@ -24,7 +24,6 @@ public abstract class Projectile {
         time -= timedelta;
         if(time <= 0){
             hit = true;
-            System.out.println(1);
         }
     }
 

@@ -52,6 +52,7 @@ public abstract class Minion extends Entity {
         if(getPosition().getCenter(new Vector2()).x > 475) {
             reachEnd = true;
         }
+        checkLife();
         move();
         if (time != 0) {
             time -= timedelta;
@@ -92,8 +93,14 @@ public abstract class Minion extends Entity {
     /*
         devuelve true o false si el minion está muerto o llega al final
          */
-    public boolean isKilled() {
-        return hitpoints <= 0;
+    public boolean isKilled(){
+        return killed;
+    }
+
+    public void checkLife() {
+        if(hitpoints <= 0){
+            die();
+        }
     }
 
     public boolean isReachEnd() {

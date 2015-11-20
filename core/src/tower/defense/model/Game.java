@@ -25,6 +25,7 @@ public class Game {
     private List<Tower> towers = new ArrayList<Tower>();
     private Collection<Minion> minions = new HashSet<Minion>();
     private Collection<Minion> minionsToRemove = new HashSet<Minion>();
+    private Collection<Minion> minionsToAdd = new HashSet<Minion>();
     private Collection<Projectile> projectiles = new HashSet<Projectile>();
     private Collection<Projectile> projectilesToAdd = new HashSet<Projectile>();
     private Collection<Projectile> projectilesToRemove = new HashSet<Projectile>();
@@ -48,8 +49,7 @@ public class Game {
         levels.addLevel(6, 6, 6);
 
     }
-    public void init() {
-        Gdx.input.getTextInput(listener, "Enter Name: ", "Enter name here: ", "");
+    public void init() {Gdx.input.getTextInput(listener, "Enter Name: ", "Enter name here: ", "");
     }
 
     public void update(Graphics graphics) {
@@ -88,6 +88,8 @@ public class Game {
         }
         minions.removeAll(minionsToRemove);
         minionsToRemove.clear();
+        minions.addAll(minionsToAdd);
+        minionsToAdd.clear();
         gameOver();
 
     }
@@ -128,7 +130,7 @@ public class Game {
     }
 
     public void addMinion(Minion minion) {
-        minions.add(minion);
+        minionsToAdd.add(minion);
         for(GameListener gl: listeners)
             gl.minionAdded(minion);
 
