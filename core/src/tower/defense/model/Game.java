@@ -27,8 +27,10 @@ public class Game {
     private Collection<Minion> minionsToRemove = new HashSet<Minion>();
     private Collection<Minion> minionsToAdd = new HashSet<Minion>();
     private Collection<Projectile> projectiles = new HashSet<Projectile>();
-    private Collection<Projectile> projectilesToAdd = new HashSet<Projectile>();
-    private Collection<Projectile> projectilesToRemove = new HashSet<Projectile>();
+    private Iterator<Projectile> itP = projectiles.iterator();
+    private Iterator<Minion> itM = minions.iterator();
+
+
 
     private List<GameListener> listeners = new LinkedList<GameListener>();
 
@@ -57,17 +59,33 @@ public class Game {
             t.update(graphics.getDeltaTime());
         }
 
-        for(Projectile p: projectiles){
+        while(itP.hasNext()){
+            Projectile p = itP.next();
             p.update(graphics.getDeltaTime());
             if(p.hit()){
-                projectilesToRemove.add(p);
+                itP.remove();
             }
         }
-        projectiles.removeAll(projectilesToRemove);
-        projectilesToRemove.clear();
-        projectiles.addAll(projectilesToAdd);
-        projectilesToAdd.clear();
 
+/*        while (itM.hasNext()){
+            Minion m = itM.next();
+            m.update(graphics.getDeltaTime());
+            if(m.isKilled()){
+                player.addMoneyMinionKill(m.getType());
+                player.increaseScore(m.getType());
+                player.printString();
+                minions.remove(m);
+                for (GameListener gl : listeners)
+                    gl.minionKilled(m);
+            }
+            if(m.isReachEnd()){
+                player.spendLife(m.getType());
+                minions.remove(m);
+                player.printString();
+                for (GameListener gl : listeners)
+                    gl.minionKilled(m);
+            }
+        }*/
         for(Minion m: minions) {
             m.update(graphics.getDeltaTime());
             if (m.isKilled()) {
@@ -134,10 +152,6 @@ public class Game {
         for(GameListener gl: listeners)
             gl.minionAdded(minion);
 
-    }
-
-    public void addProjectileToAdd(Projectile projectile){
-        projectilesToAdd.add(projectile);
     }
 
     public void addProjectile(Projectile projectile){

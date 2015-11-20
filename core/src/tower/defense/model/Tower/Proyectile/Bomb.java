@@ -26,7 +26,7 @@ public class Bomb extends Projectile {
         for(Minion target: inRange){
             System.out.println(inRange);
             Projectile projectile = new SimpleProjectile(target, getTower(),damageFactor);
-            getTower().getGame().addProjectileToAdd(projectile);
+            getTower().getGame().addProjectile(projectile);
         }
         getTarget().receiveDamage(getDamage());
     }
