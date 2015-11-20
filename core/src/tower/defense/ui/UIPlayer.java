@@ -11,12 +11,15 @@ public class UIPlayer {
 
     private Player player;
     private BitmapFont bitmapFont;
+    private BitmapFont font;
     private String score;
 
     public UIPlayer(Player player){
         this.player = player;
         bitmapFont = new BitmapFont();
+        font = new BitmapFont();
         bitmapFont.setColor(com.badlogic.gdx.graphics.Color.WHITE);
+        font.setColor(com.badlogic.gdx.graphics.Color.BLACK);
     }
 
     public void draw(UIManager uiManager){
@@ -28,7 +31,7 @@ public class UIPlayer {
         bitmapFont.draw(uiManager.getBatch(),stringLives(player.getLives()), 525, 200);
 
         if(player.isOver()){
-            bitmapFont.draw(uiManager.getBatch(),"GAME OVER", 300, 200);
+            font.draw(uiManager.getBatch(),"GAME OVER", 300, 200);
         }
         uiManager.getBatch().end();
 
