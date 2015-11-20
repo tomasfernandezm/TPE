@@ -28,7 +28,6 @@ public abstract class Minion extends Entity {
     private Path path;
     private float slowFactor;
     private int velocityMagnitude = 2;
-    private float slowTimer;
 
     public Minion(Vector2 center, Game game, Path path, float hitpoints, Vector2 velocity) {
         super(game);
@@ -110,7 +109,6 @@ public abstract class Minion extends Entity {
     private float time;
 
     public void slow(float slowFactor, float slowTimer) {
-        this.slowTimer = slowTimer;
         this.slowFactor = slowFactor;
         slow = true;
         velocity.scl(slowFactor);
