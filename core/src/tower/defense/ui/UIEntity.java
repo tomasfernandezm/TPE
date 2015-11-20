@@ -32,10 +32,6 @@ public class UIEntity<T extends Entity> {
         uiManager.getBatch().draw(texture, r.x, r.y, r.getWidth(), r.getHeight());
         uiManager.getBatch().end();
 
-        uiManager.getShapeRenderer().setColor(Color.YELLOW);
-        uiManager.getShapeRenderer().begin(ShapeRenderer.ShapeType.Line);
-        uiManager.getShapeRenderer().rect(r.x, r.y, r.getWidth(), r.getHeight());
-        uiManager.getShapeRenderer().end();
     }
 
     public T getModel() {

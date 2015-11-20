@@ -14,6 +14,8 @@ import tower.defense.model.Tower.Proyectile.Bomb;
 import tower.defense.model.Tower.Proyectile.Projectile;
 import tower.defense.model.Tower.SimpleTower;
 import tower.defense.model.Tower.Tower;
+import tower.defense.ui.UIManager;
+import tower.defense.ui.UIPlayer;
 
 import java.util.*;
 
@@ -36,6 +38,7 @@ public class Game {
     private Path path = Path.pathGetInstance();
     private Levels levels = new Levels(this);
     private boolean gameOver = false;
+    private UIPlayer uiPlayer = new UIPlayer(player);
 
     private Vector2 boundaries;
     private TextInputListener listener = new TextInputListener(player);
@@ -49,7 +52,9 @@ public class Game {
         levels.addLevel(6, 6, 6);
 
     }
-    public void init() {Gdx.input.getTextInput(listener, "Enter Name: ", "Enter name here: ", "");
+    public void init() {
+        Gdx.input.getTextInput(listener, "Enter Name: ", "", "");
+        System.out.println(listeners.get(0));
     }
 
     public void update(Graphics graphics) {
@@ -91,6 +96,8 @@ public class Game {
         minions.addAll(minionsToAdd);
         minionsToAdd.clear();
         gameOver();
+
+        uiPlayer.draw((UIManager)listeners.get(0));
 
     }
 // probando
