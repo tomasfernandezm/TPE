@@ -45,7 +45,12 @@ public class Path {
                 return false;
             }
         }
-        return true;
+        for (Rectangle r:rectangleListMap) {
+            if(entity.getPosition().overlaps(r)){
+                return true;
+            }
+        }
+        return false;
     }
 
 

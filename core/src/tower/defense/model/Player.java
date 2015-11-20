@@ -12,7 +12,7 @@ public class Player {
     private int lives;
 
     public Player(){
-        money = 500;
+        money = 1000;
         level = 0;
         lives = 50;
         score = 0;
@@ -23,7 +23,7 @@ public class Player {
     }
 
     public void increaseScore(int typeOfMinion) {
-        this.score += getMoney()*getLevel() * getLives()* typeOfMinion/10;
+        this.score += getMoney()*getLevel() * getLives()* typeOfMinion/200;
     }
 
     public int getLives() {
@@ -51,7 +51,7 @@ public class Player {
     }
 
     public void addMoneyMinionKill(int typeOfMinion){
-        money += typeOfMinion*50;
+        money += typeOfMinion*25;
     }
 
     public void spendMoney(int money){ this.money -= money; }
