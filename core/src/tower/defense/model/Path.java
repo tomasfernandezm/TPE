@@ -14,7 +14,8 @@ import java.util.List;
  */
 public class Path {
     private static Path instance;
-    private LinkedList<Rectangle> rectangleList = new LinkedList<Rectangle>();
+    private LinkedList<Rectangle> rectangleListMap = new LinkedList<Rectangle>();
+    private LinkedList<Rectangle> rectangleListPath = new LinkedList<Rectangle>();
     ;
     private final int[][] path2 = new int[][]{{9, 1, 9, 9, 9, 9, 9, 9}, {9, 1, 9, 9, 4, 5, 6, 9}, {9, 1, 9, 9, 4, 9, 6, 9}, {9, 1, 9, 9, 4, 9, 6, 9}, {9, 1, 2, 3, 4, 9, 6, 9}, {9, 9, 9, 9, 9, 9, 6, 9}, {9, 9, 9, 9, 9, 9, 6, 9}, {9, 1, 2, 3, 4, 5, 6, 9}, {9, 1, 9, 9, 9, 9, 9, 9}, {9, 1, 9, 9, 9, 9, 9, 9}};
     ;
@@ -30,28 +31,33 @@ public class Path {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 8; j++) {
                 if (j != path2[i][j]) {
-                    addRectangle(new Rectangle(i * 50, j * 50, 50, 50));
+                    addRectangleMap(new Rectangle(i * 50, j * 50, 50, 50));
+                }else{
+                    addRectanglePath(new Rectangle(i * 50, j * 50, 50, 50));
                 }
             }
         }
     }
 
     public boolean contains(Entity entity) {
-        for (Rectangle r : rectangleList) {
-            if (r.contains(entity.getPosition().getCenter(new Vector2()))) {
-                return true;
+        for (Rectangle r : rectangleListPath) {
+            if (entity.getPosition().overlaps(r)) {
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
 
-    public void addRectangle(Rectangle rectangle) {
-        rectangleList.add(rectangle);
+    public void addRectangleMap(Rectangle rectangle) {
+        rectangleListMap.add(rectangle);
+    }
+    public void addRectanglePath(Rectangle rectangle) {
+        rectangleListPath.add(rectangle);
     }
 
     public LinkedList<Rectangle> getRectangles() {
-        return rectangleList;
+        return rectangleListMap;
     }
 
     public int[][] getPath() {
@@ -63,7 +69,7 @@ public class Path {
 
     public int rotate(Minion minion) {
         if(TimeUtils.nanoTime() - time > 2000000000) {
-            for (Rectangle r : rectangleList) {
+            for (Rectangle r : rectangleListMap) {
 //            if(minion.getPosition().overlaps(r)){
                 if (minion.isInX()) {
                     //abajo

@@ -58,7 +58,7 @@ public abstract class Tower extends Entity {
     public void upgradeRange(){
         if(!upgradeRange && getGame().getPlayer().getMoney() >= 100) {
             upgradeRange = true;
-            setRange(getRange() * 1.15f);
+            setRange(getRange() * 1.25f);
             getGame().getPlayer().spendMoney(100);
         }
     }

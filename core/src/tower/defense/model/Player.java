@@ -13,7 +13,7 @@ public class Player {
 
     public Player(){
         money = 500;
-        level = 1;
+        level = 0;
         lives = 50;
         score = 0;
     }

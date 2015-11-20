@@ -25,8 +25,10 @@ public abstract class Minion extends Entity {
     private boolean inX = true;
     private Vector2 velocity;
     private float hitpoints;
+    private float slowTime;
     private Path path;
     private float slowFactor;
+
     private int velocityMagnitude = 2;
 
     public Minion(Vector2 center, Game game, Path path, float hitpoints, Vector2 velocity) {
@@ -43,6 +45,7 @@ public abstract class Minion extends Entity {
         this(center, game, Path, hitpoints, new Vector2(1f, 0f));
     }
 
+
     @Override
     public void update(float timedelta) {
         if (isKilled()) {
@@ -52,18 +55,14 @@ public abstract class Minion extends Entity {
             reachEnd = true;
         }
         checkLife();
-        move();
-        if (time != 0) {
-            time -= timedelta;
-            if (time <= 0) {
-                time = 0;
-                slow = false;
-                velocity.scl(1 / slowFactor);
+        if(slow){
+            if(TimeUtils.nanoTime() - slowTime > 999999999){
+                normalVelocity();
             }
         }
+        move();
 
     }
-
 
     public boolean isElectric() {
         return electric;
@@ -106,13 +105,17 @@ public abstract class Minion extends Entity {
         return reachEnd;
     }
 
-    private float time;
-
-    public void slow(float slowFactor, float slowTimer) {
+    public void slow(float slowFactor) {
         this.slowFactor = slowFactor;
-        slow = true;
         velocity.scl(slowFactor);
-        time = slowTimer;
+        slowTime = TimeUtils.nanoTime();
+        slow = true;
+    }
+
+    public void normalVelocity(){
+        velocity.scl(1 / slowFactor);
+        slowTime = 0;
+        slow = false;
     }
 
     public void changeInX() {
