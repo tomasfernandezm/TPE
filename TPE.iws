@@ -5,8 +5,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/classes/main/tower/defense/model/Tower/Proyectile/ElectricRay.class" afterPath="$PROJECT_DIR$/core/build/classes/main/tower/defense/model/Tower/Proyectile/ElectricRay.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/classes/main/tower/defense/model/Tower/TeslaTower.class" afterPath="$PROJECT_DIR$/core/build/classes/main/tower/defense/model/Tower/TeslaTower.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TPE.iws" afterPath="$PROJECT_DIR$/TPE.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/tower/defense/model/Game.java" afterPath="$PROJECT_DIR$/core/src/tower/defense/model/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/tower/defense/model/Tower/Proyectile/Bomb.java" afterPath="$PROJECT_DIR$/core/src/tower/defense/model/Tower/Proyectile/Bomb.java" />
     </list>
     <ignored path="TPE.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,10 +44,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Game.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/tower/defense/model/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.83516484">
+            <state vertical-scroll-proportion="0.0">
               <caret line="150" column="20" selection-start-line="150" selection-start-column="20" selection-end-line="150" selection-end-column="20" />
               <folding />
             </state>
@@ -96,10 +94,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Player.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/src/tower/defense/model/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="0.027472528">
               <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
               <folding />
             </state>
@@ -1662,7 +1660,7 @@
       <workItem from="1447952761828" duration="8275000" />
       <workItem from="1447962589002" duration="10088000" />
       <workItem from="1447976876701" duration="6166000" />
-      <workItem from="1447986626891" duration="885000" />
+      <workItem from="1447986626891" duration="901000" />
     </task>
     <task id="LOCAL-00001" summary="JOJOJO">
       <created>1447818909438</created>
@@ -1748,11 +1746,17 @@
       <option name="project" value="LOCAL" />
       <updated>1447986156212</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Actualizado">
+      <created>1447987523795</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1447987523795</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83541000" />
+    <option name="totallyTimeSpent" value="83557000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1386" height="788" extended-state="0" />
@@ -1974,6 +1978,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2221,14 +2226,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/tower/defense/model/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/tower/defense/model/Tower/Proyectile/FreezeRay.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2281,8 +2278,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/tower/defense/model/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.83516484">
+        <state vertical-scroll-proportion="0.0">
           <caret line="150" column="20" selection-start-line="150" selection-start-column="20" selection-end-line="150" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/tower/defense/model/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.027472528">
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
           <folding />
         </state>
       </provider>
