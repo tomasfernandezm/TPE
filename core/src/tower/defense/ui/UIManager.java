@@ -131,9 +131,6 @@ public class UIManager implements GameListener {
 //          getShapeRenderer().rect(r.getX(),r.getY(),r.getWidth(),r.getHeight());
 //           getShapeRenderer().end();
 //    }
-        font.draw(batch, "Vidas: ", 525, 350);
-        msg = "" + player.getLives();
-        font.draw(batch, msg, 580, 350);
         batch.end();
 
         for(UIEntity uiEntity: entities.values()) {
